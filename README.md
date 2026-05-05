@@ -26,40 +26,44 @@ After analyzing every single line of code:
 
 ---
 
+## 🌐 Live Tool
+
+**🎮 Try it now:** https://eliseyrotar.github.io/203658.xyz/
+
+The cartridge encryption/decryption tool is hosted on GitHub Pages for easy access!
+
+---
+
 ## 📁 Files Included
 
 | File | Description |
 |------|-------------|
+| **index.html** | Visual encryption/decryption tool (hosted on GitHub Pages) |
 | **QUICK_START.md** | Get playing in 2 minutes |
-| **cartridge_tool.html** | Visual encryption/decryption tool |
-| **console_script.js** | Browser console commands |
 | **COMPLETE_ANALYSIS.md** | Line-by-line code analysis (1,535+ lines) |
 | **cartridge_analysis.md** | Encryption technical details |
-| **EXAMPLE_CARTRIDGE.txt** | Ready-to-use example with story map |
 | **README.md** | This file |
+| **LICENSE** | MIT License |
 
 ---
 
 ## 🚀 Quick Start
 
-### Method 1: Console (Fastest - 30 seconds)
+### Method 1: Web Tool (Easiest - 1 minute)
 ```bash
-1. Go to https://203658.xyz/
-2. Press F12 (open console)
-3. Paste contents of console_script.js
-4. Run: copy(EXAMPLE_CARTRIDGE)
+1. Visit https://eliseyrotar.github.io/203658.xyz/
+2. Click "Generate Example Cartridge"
+3. Click "Copy Result"
+4. Go to https://203658.xyz/
 5. Find cartridge terminal in game
 6. Paste and click "run"
 ```
 
-### Method 2: HTML Tool (Easiest - 1 minute)
+### Method 2: Local Tool
 ```bash
-1. Open cartridge_tool.html in browser
-2. Click "Generate Example Cartridge"
-3. Click "Copy Result"
-4. Go to https://203658.xyz/
-5. Find cartridge terminal
-6. Paste and click "run"
+1. Clone this repository
+2. Open index.html in your browser
+3. Follow the same steps as above
 ```
 
 ---
@@ -70,9 +74,8 @@ After analyzing every single line of code:
 → **QUICK_START.md** - Get playing immediately
 
 ### For Creating Cartridges
-→ **cartridge_tool.html** - Visual tool  
-→ **console_script.js** - Console commands  
-→ **EXAMPLE_CARTRIDGE.txt** - Example with story map
+→ **https://eliseyrotar.github.io/203658.xyz/** - Live web tool  
+→ **index.html** - Local version of the tool
 
 ### For Understanding the System
 → **cartridge_analysis.md** - Encryption details  
@@ -305,10 +308,9 @@ Promise.all(stories.map(encryptCartridge))
 
 Everything you need to create and use cartridges is here:
 
-1. **Tools** - cartridge_tool.html & console_script.js
-2. **Examples** - EXAMPLE_CARTRIDGE.txt
-3. **Guides** - QUICK_START.md
-4. **Documentation** - COMPLETE_ANALYSIS.md
+1. **Live Tool** - https://eliseyrotar.github.io/203658.xyz/
+2. **Guides** - QUICK_START.md
+3. **Documentation** - COMPLETE_ANALYSIS.md & cartridge_analysis.md
 
 **Start exploring and creating! 🌲✨🎮**
 
