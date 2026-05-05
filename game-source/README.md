@@ -1,34 +1,48 @@
-# 203658.xyz Game Source
+# 203658.xyz Game Source Code
 
-This folder contains the source code for the actual game at https://203658.xyz/
+This folder contains the **original source code** from https://203658.xyz/ (NOT the toolkit).
 
 ## Files
 
-- `index.html` - The complete game source code
-- All game logic, rendering, and cartridge system
+- **index.html** - The complete game (from xqr.htm)
+- **xqr_files/** - Supporting files for the game
+  - **a.htm** - Cloudflare challenge page
+  - **a_data/main.js** - Cloudflare challenge script
 
 ## About the Game
 
-The game is an infinite procedurally-generated world where players:
-- Navigate using arrow keys or WASD
-- Find rare cartridge terminals (0.005% spawn rate)
-- Insert encrypted cartridges to play interactive text adventures
-- Explore an endless ASCII art landscape
+This is the actual game that runs at https://203658.xyz/
 
-## Technical Details
+### Features:
+- Infinite procedurally-generated ASCII world
+- Rare cartridge terminals (0.005% spawn rate)
+- AES-GCM encrypted cartridge system
+- WASD/Arrow key movement
+- Touch/mouse drag support
 
-- **Encryption**: AES-GCM 256-bit with PBKDF2 key derivation
+### Technical Stack:
+- Pure vanilla JavaScript
+- HTML5 Canvas rendering
+- Web Crypto API for encryption
+- Compression API for GZIP
+
+### Encryption Details:
+- **Algorithm**: AES-GCM 256-bit
+- **Key Derivation**: PBKDF2 (100,000 iterations)
+- **Password**: `uninteresting205436705384`
+- **Salt**: `enc-salt`
 - **Compression**: GZIP
-- **Rendering**: ASCII art on HTML5 canvas
-- **Frame Rate**: 20 FPS
-- **World Generation**: Chunk-based (16x16 tiles)
 
-## Cartridge Format
+### Cartridge Format:
+- Must start with node `203658`
+- 6-digit node IDs
+- Format: `NODEID Text content`
+- Max 1582 chars per line
 
-Cartridges must:
-- Start with node `203658`
-- Use 6-digit node IDs
-- Follow the format: `NODEID Text content`
-- Max 1582 characters per line
+## Creating Cartridges
 
-See the main toolkit at the repository root for creating cartridges.
+Use the toolkit at the repository root (index.html) to create encrypted cartridges for this game.
+
+## License
+
+Original game from https://203658.xyz/
