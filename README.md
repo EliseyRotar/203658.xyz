@@ -39,9 +39,9 @@ The cartridge encryption/decryption tool is hosted on GitHub Pages for easy acce
 | File | Description |
 |------|-------------|
 | **index.html** | Visual encryption/decryption tool (hosted on GitHub Pages) |
-| **QUICK_START.md** | Get playing in 2 minutes |
-| **COMPLETE_ANALYSIS.md** | Line-by-line code analysis (1,535+ lines) |
-| **cartridge_analysis.md** | Encryption technical details |
+| **QUICK_START.md** | Get started in 2 minutes |
+| **ANALYSIS.md** | Complete technical documentation and code analysis |
+| **game-source/** | Original source code from https://203658.xyz/ |
 | **README.md** | This file |
 | **LICENSE** | MIT License |
 
@@ -71,15 +71,15 @@ The cartridge encryption/decryption tool is hosted on GitHub Pages for easy acce
 ## 📖 Documentation Structure
 
 ### For Quick Use
-→ **QUICK_START.md** - Get playing immediately
+→ **QUICK_START.md** - Get started in 2 minutes
 
 ### For Creating Cartridges
 → **https://eliseyrotar.github.io/203658.xyz/** - Live web tool  
 → **index.html** - Local version of the tool
 
 ### For Understanding the System
-→ **cartridge_analysis.md** - Encryption details  
-→ **COMPLETE_ANALYSIS.md** - Full code analysis
+→ **ANALYSIS.md** - Complete technical documentation and code analysis  
+→ **game-source/** - Original game source code from https://203658.xyz/
 
 ---
 
