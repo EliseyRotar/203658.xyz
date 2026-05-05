@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="XQR Cartridge Toolkit - Create encrypted cartridges for the 203658.xyz adventure game">
+<meta name="keywords" content="XQR, cartridge, encryption, 203658.xyz, adventure game, text adventure">
+<meta name="author" content="EliseyRotar">
+<title>XQR Cartridge Toolkit</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg: #faf8f5;
+  --surface: #ffffff;
+  --text: #1a1a1a;
+  --text-muted: #666666;
+  --border: #d4d4d4;
+  --accent: #0066cc;
+  --accent-hover: #0052a3;
+  --success: #008000;
+  --error: #cc0000;
+  --code-bg: #f5f5f5;
+  --shadow: rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+header {
+  margin-bottom: 60px;
+  border-bottom: 2px solid var(--text);
+  padding-bottom: 20px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: -0.02em;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.nav-links a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+
+.nav-links a:hover {
+  border-bottom-color: var(--accent);
+}
+
+section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  padding: 32px;
+  margin-bottom: 32px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.info-box {
+  background: var(--code-bg);
+  border-left: 3px solid var(--text);
+  padding: 16px;
+  margin-bottom: 24px;
+  font-size: 0.9375rem;
+}
+
+.info-box code {
+  background: var(--surface);
+  padding: 2px 6px;
+  border: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+}
+
+textarea,
+input[type="text"] {
+  width: 100%;
+  background: var(--surface);
+  color: var(--text);
+  border: 2px solid var(--border);
+  padding: 12px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+textarea {
+  min-height: 200px;
+}
+
+textarea:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.button-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+button {
+  background: var(--text);
+  color: var(--bg);
+  border: 2px solid var(--text);
+  padding: 12px 24px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background: var(--bg);
+  color: var(--text);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button.secondary {
+  background: var(--surface);
+  color: var(--text);
+  border: 2px solid var(--text);
+}
+
+button.secondary:hover {
+  background: var(--text);
+  color: var(--bg);
+}
+
+.output {
+  background: var(--code-bg);
+  border: 1px solid var(--border);
+  padding: 20px;
+  margin-top: 20px;
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  word-break: break-all;
+}
+
+.output pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.status {
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.status.success {
+  color: var(--success);
+}
+
+.status.error {
+  color: var(--error);
+}
+
+.cartridge-result {
+  background: var(--surface);
+  border: 2px solid var(--text);
+  padding: 16px;
+  margin-top: 12px;
+  word-break: break-all;
+}
+
+.meta {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.8125rem;
+}
+
+.instructions {
+  background: var(--code-bg);
+  padding: 20px;
+  border: 1px solid var(--border);
+  font-family: 'Courier New', monospace;
+  font-size: 0.875rem;
+  line-height: 1.8;
+}
+
+.instructions pre {
+  white-space: pre-wrap;
+}
+
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+  font-size: 0.875rem;
+  border-top: 1px solid var(--border);
+  margin-top: 60px;
+}
+
+footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  section {
+    padding: 24px 16px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>XQR Cartridge Toolkit</h1>
+    <p class="subtitle">Create encrypted cartridges for 203658.xyz</p>
+    <nav class="nav-links">
+      <a href="https://203658.xyz/" target="_blank">Play Game</a>
+      <a href="https://github.com/EliseyRotar/203658.xyz" target="_blank">GitHub</a>
+      <a href="QUICK_START.md">Quick Start</a>
+    </nav>
+  </header>
+
+  <section>
+    <h2>Create Cartridge</h2>
+    <div class="info-box">
+      <strong>Format:</strong> Each question is 3 lines (question + 2 answers). First node must be <code>203658</code>.
+    </div>
+    <textarea id="plaintext" placeholder="203658 Welcome to the adventure! What do you do?
+123456 Go left into the dark forest
+789012 Go right toward the mountains
+
+123456 You enter the forest. It's very dark.
+203658 Go back
+456789 Continue deeper
+
+789012 You see mountains in the distance.
+203658 Return to start
+999999 Climb the mountain"></textarea>
+    <div class="button-group">
+      <button onclick="encrypt()">Encrypt</button>
+      <button class="secondary" onclick="copyEncrypted()">Copy Result</button>
+      <button class="secondary" onclick="clearEncrypt()">Clear</button>
+    </div>
+    <div id="encryptOutput" class="output" style="display:none;"></div>
+  </section>
+
+  <section>
+    <h2>Decrypt Cartridge</h2>
+    <div class="info-box">
+      Paste an encrypted cartridge in <code>IV:ENCRYPTED</code> format.
+    </div>
+    <input type="text" id="encrypted" placeholder="dGVzdGl2MTIzNDU2Nzg=:YWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXo=">
+    <div class="button-group">
+      <button onclick="decrypt()">Decrypt</button>
+      <button class="secondary" onclick="clearDecrypt()">Clear</button>
+    </div>
+    <div id="decryptOutput" class="output" style="display:none;"></div>
+  </section>
+
+  <section>
+    <h2>Example Cartridge</h2>
+    <div class="info-box">
+      Generate a working example with a complete branching story.
+    </div>
+    <div class="button-group">
+      <button onclick="generateExample()">Generate Example</button>
+    </div>
+    <div id="exampleOutput" class="output" style="display:none;"></div>
+  </section>
+
+  <section>
+    <h2>Instructions</h2>
+    <div class="instructions">
+      <pre>1. Create your story in the "Create Cartridge" section
+2. Click "Encrypt"
+3. Copy the encrypted string
+4. Go to https://203658.xyz/
+5. Find a cartridge terminal in the game
+6. Paste the encrypted string
+7. Click "run"
+
+FORMAT RULES:
+• First node must be 203658
+• Each node: 6-digit ID followed by text
+• Questions have 0-2 answer options
+• Use 000000 for end nodes
+• Max 1582 chars per line
+
+EXAMPLE:
+203658 Your question here?
+111111 Answer option 1
+222222 Answer option 2</pre>
+    </div>
+  </section>
+</div>
+
+<footer>
+  <p>Made by <a href="https://github.com/EliseyRotar" target="_blank">EliseyRotar</a></p>
+  <p><a href="https://github.com/EliseyRotar/203658.xyz" target="_blank">Open Source</a> • MIT License</p>
+</footer>
+
+<script>
+const PASSWORD = 'uninteresting205436705384';
+const SALT = 'enc-salt';
+
+async function deriveKey(password) {
+  const encoder = new TextEncoder();
+  const keyMaterial = await crypto.subtle.importKey('raw', encoder.encode(password), 'PBKDF2', false, ['deriveKey']);
+  return crypto.subtle.deriveKey(
+    { name: 'PBKDF2', salt: encoder.encode(SALT), iterations: 100000, hash: 'SHA-256' },
+    keyMaterial,
+    { name: 'AES-GCM', length: 256 },
+    false,
+    ['encrypt', 'decrypt']
+  );
+}
+
+async function compressData(text) {
+  const encoder = new TextEncoder();
+  const stream = new CompressionStream('gzip');
+  const writer = stream.writable.getWriter();
+  writer.write(encoder.encode(text));
+  writer.close();
+  const chunks = [];
+  const reader = stream.readable.getReader();
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+  }
+  const compressed = new Uint8Array(chunks.reduce((acc, chunk) => acc + chunk.length, 0));
+  let offset = 0;
+  for (const chunk of chunks) {
+    compressed.set(chunk, offset);
+    offset += chunk.length;
+  }
+  return compressed;
+}
+
+async function decompressData(compressed) {
+  const stream = new DecompressionStream('gzip');
+  const writer = stream.writable.getWriter();
+  writer.write(compressed);
+  writer.close();
+  const chunks = [];
+  const reader = stream.readable.getReader();
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    chunks.push(value);
+  }
+  const decompressed = new Uint8Array(chunks.reduce((acc, chunk) => acc + chunk.length, 0));
+  let offset = 0;
+  for (const chunk of chunks) {
+    decompressed.set(chunk, offset);
+    offset += chunk.length;
+  }
+  return new TextDecoder().decode(decompressed);
+}
+
+function arrayBufferToBase64(buffer) {
+  const bytes = new Uint8Array(buffer);
+  let binary = '';
+  for (let i = 0; i < bytes.length; i++) {
+    binary += String.fromCharCode(bytes[i]);
+  }
+  return btoa(binary);
+}
+
+function base64ToArrayBuffer(base64) {
+  const binary = atob(base64);
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) {
+    bytes[i] = binary.charCodeAt(i);
+  }
+  return bytes;
+}
+
+async function encrypt() {
+  const plaintext = document.getElementById('plaintext').value;
+  const output = document.getElementById('encryptOutput');
+  
+  if (!plaintext.trim()) {
+    output.innerHTML = '<div class="status error">Error: Please enter text to encrypt</div>';
+    output.style.display = 'block';
+    return;
+  }
+  
+  if (!plaintext.includes('203658')) {
+    output.innerHTML = '<div class="status error">Error: Cartridge must contain node 203658 (starting node)</div>';
+    output.style.display = 'block';
+    return;
+  }
+  
+  output.innerHTML = '<div class="status">Encrypting...</div>';
+  output.style.display = 'block';
+  
+  try {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    const key = await deriveKey(PASSWORD);
+    const compressed = await compressData(plaintext);
+    const iv = crypto.getRandomValues(new Uint8Array(12));
+    const encrypted = await crypto.subtle.encrypt({ name: 'AES-GCM', iv: iv }, key, compressed);
+    
+    const ivBase64 = arrayBufferToBase64(iv);
+    const encryptedBase64 = arrayBufferToBase64(encrypted);
+    const cartridge = `${ivBase64}:${encryptedBase64}`;
+    
+    output.innerHTML = `
+      <div class="status success">Success: Cartridge created</div>
+      <div class="cartridge-result">${cartridge}</div>
+      <div class="meta">
+        Length: ${cartridge.length} characters<br>
+        IV: ${ivBase64}<br>
+        Data: ${encryptedBase64.substring(0, 40)}...
+      </div>
+    `;
+    window.lastEncrypted = cartridge;
+  } catch (error) {
+    output.innerHTML = `<div class="status error">Error: ${error.message}</div>`;
+  }
+}
+
+async function decrypt() {
+  const encrypted = document.getElementById('encrypted').value.trim();
+  const output = document.getElementById('decryptOutput');
+  
+  if (!encrypted) {
+    output.innerHTML = '<div class="status error">Error: Please enter an encrypted cartridge</div>';
+    output.style.display = 'block';
+    return;
+  }
+  
+  if (!encrypted.includes(':')) {
+    output.innerHTML = '<div class="status error">Error: Invalid format. Expected IV:ENCRYPTED</div>';
+    output.style.display = 'block';
+    return;
+  }
+  
+  output.innerHTML = '<div class="status">Decrypting...</div>';
+  output.style.display = 'block';
+  
+  try {
+    await new Promise(resolve => setTimeout(resolve, 200));
+    const [ivBase64, encryptedBase64] = encrypted.split(':');
+    const iv = base64ToArrayBuffer(ivBase64);
+    const encryptedData = base64ToArrayBuffer(encryptedBase64);
+    const key = await deriveKey(PASSWORD);
+    const decrypted = await crypto.subtle.decrypt({ name: 'AES-GCM', iv: iv }, key, encryptedData);
+    const decompressed = await decompressData(new Uint8Array(decrypted));
+    
+    output.innerHTML = `
+      <div class="status success">Success: Cartridge decrypted</div>
+      <pre>${decompressed}</pre>
+    `;
+  } catch (error) {
+    output.innerHTML = `<div class="status error">Error: ${error.message}<br>Make sure the cartridge string is valid.</div>`;
+  }
+}
+
+async function generateExample() {
+  const exampleText = `203658 You wake up in a mysterious forest. The trees whisper secrets. What do you do?
+111111 Follow the sound of running water
+222222 Climb the tallest tree to get your bearings
+
+111111 You find a crystal-clear stream. A glowing fish swims by.
+333333 Try to catch the glowing fish
+203658 Return to the forest clearing
+
+222222 From the treetop, you see a distant tower emitting strange lights.
+444444 Head toward the mysterious tower
+203658 Climb back down and reconsider
+
+333333 The fish grants you a wish! You feel energized.
+555555 Wish to understand the forest's language
+203658 Wish to return home
+
+444444 The tower door opens. Inside, ancient technology hums.
+666666 Investigate the control panel
+203658 Leave the tower
+
+555555 The trees now speak to you! They warn of a great danger approaching.
+777777 Ask how to stop the danger
+203658 Thank them and return to the clearing
+
+666666 You activate the ancient machine. Reality begins to shift!
+888888 Embrace the change
+203658 Quickly shut it down
+
+777777 The trees tell you about a sacred artifact hidden nearby.
+999999 Search for the artifact
+203658 Return to the clearing
+
+888888 You transcend into a higher dimension. The adventure continues...
+203658 Return to the beginning
+000000 End
+
+999999 You found the artifact! It pulses with power.
+203658 Take it back to the clearing
+000000 End`;
+
+  document.getElementById('plaintext').value = exampleText;
+  await encrypt();
+  
+  const output = document.getElementById('exampleOutput');
+  output.innerHTML = `
+    <div class="status success">Example generated and encrypted</div>
+    <div style="margin-top: 12px;">
+      The example has been loaded into the "Create Cartridge" section above.
+      Scroll up to copy the encrypted cartridge.
+    </div>
+  `;
+  output.style.display = 'block';
+  
+  document.getElementById('encryptOutput').scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function copyEncrypted() {
+  if (window.lastEncrypted) {
+    navigator.clipboard.writeText(window.lastEncrypted).then(() => {
+      const btn = event.target;
+      const originalText = btn.textContent;
+      btn.textContent = 'Copied!';
+      setTimeout(() => {
+        btn.textContent = originalText;
+      }, 2000);
+    }).catch(() => {
+      alert('Failed to copy. Please select and copy manually.');
+    });
+  } else {
+    alert('No encrypted cartridge to copy. Please encrypt first.');
+  }
+}
+
+function clearEncrypt() {
+  document.getElementById('plaintext').value = '';
+  document.getElementById('encryptOutput').style.display = 'none';
+  window.lastEncrypted = null;
+}
+
+function clearDecrypt() {
+  document.getElementById('encrypted').value = '';
+  document.getElementById('decryptOutput').style.display = 'none';
+}
+</script>
+</body>
+</html>
