@@ -1,0 +1,24 @@
+# OS Files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Downloaded HTML files (not part of the toolkit)
+https___203658.xyz_.htm
+xqr.htm
+xqr_files/
+https___203658.xyz__files/
