@@ -1,39 +1,30 @@
-# 🚀 QUICK START GUIDE
+# 🚀 Quick Start Guide
 
-## TL;DR - Get Playing in 2 Minutes
+Get started creating cartridges in under 2 minutes!
 
-### Option 1: Browser Console (Fastest)
-1. Go to https://203658.xyz/
-2. Press **F12** to open console
-3. Copy and paste **console_script.js** into console
-4. Run: `copy(EXAMPLE_CARTRIDGE)`
-5. Find a cartridge terminal in the game
-6. Paste and click "run"
+## Step 1: Open the Toolkit
 
-### Option 2: HTML Tool (Easiest)
-1. Open **cartridge_tool.html** in your browser
-2. Click "Generate Example Cartridge"
-3. Click "Copy Result"
-4. Go to https://203658.xyz/
-5. Find a cartridge terminal
-6. Paste and click "run"
+Visit **https://eliseyrotar.github.io/203658.xyz/** or open `index.html` locally.
 
----
+## Step 2: Generate an Example
 
-## 🎮 Game Controls
+Click the **"Generate Example"** button to create a random story. Each click generates a different adventure!
 
-| Control | Action |
-|---------|--------|
-| Arrow Keys | Move around |
-| WASD | Alternative movement |
-| Mouse Drag | Touch/mobile movement |
-| Click | Interact with answers |
+## Step 3: Copy the Cartridge
 
----
+After encryption completes, click **"Copy Result"** to copy the encrypted cartridge string.
 
-## 🔍 Finding Cartridge Terminals
+## Step 4: Play the Game
 
-Cartridge terminals look like this:
+1. Go to **https://203658.xyz/**
+2. Use **Arrow Keys** or **WASD** to explore
+3. Find a cartridge terminal (rare spawn - keep exploring!)
+4. Paste your cartridge and click **"run"**
+
+## Cartridge Terminal
+
+Look for this in the game world:
+
 ```
 ╓────────────────────────╖
 ║ -- insert cartridge -- ║
@@ -43,148 +34,58 @@ Cartridge terminals look like this:
 ╙────────────────────────╜
 ```
 
-**Tips:**
-- They spawn randomly (rare)
-- Keep exploring in different directions
-- The world is infinite
-- Look for the box with input field
+## Create Your Own Story
 
----
+### Format Rules:
+- First node **must be** `203658`
+- Each node: `NODEID Text content`
+- Node IDs are 6 digits (000000-999999)
+- Max 1582 characters per line
+- 0-2 answer options per question
 
-## ✏️ Creating Your Own Cartridge
+### Example:
 
-### Simple Example
 ```
-203658 You find a magic lamp. Rub it?
-111111 Yes, rub the lamp
-222222 No, leave it alone
+203658 You find a mysterious door. Open it?
+111111 Yes, open the door
+222222 No, walk away
 
-111111 A genie appears and grants you three wishes!
-203658 Make a wish
-000000 End
-
-222222 You walk away. The adventure ends.
+111111 Inside is a treasure chest!
 203658 Go back
 000000 End
+
+222222 You leave. The adventure ends.
+203658 Return to the door
+000000 End
 ```
 
-### Encrypt It
-**Using Console:**
-```javascript
-const myStory = `203658 Your text here...`;
-encryptCartridge(myStory).then(copy);
-```
+## Tips
 
-**Using HTML Tool:**
-1. Paste your story in the text area
-2. Click "Encrypt to Cartridge"
-3. Copy the result
+- **Test first**: Use the "Decrypt Cartridge" section to verify your format
+- **Start simple**: Begin with 3-5 nodes
+- **Always include 203658**: Players need a way back to start
+- **Save your work**: Keep the unencrypted version
 
----
+## Troubleshooting
 
-## ❌ Common Mistakes
+**"invalid cartridge" error?**
+- Check that node 203658 exists
+- Verify all node IDs are exactly 6 digits
+- Ensure text doesn't exceed 1582 characters per line
 
-| Mistake | Fix |
-|---------|-----|
-| No node 203658 | First node MUST be 203658 |
-| Wrong format | Use: `NODEID Text here` |
-| Not 6 digits | Node IDs must be exactly 6 digits |
-| Too long | Max 1582 chars per line |
-| Wrong encryption | Use the provided tools |
+**Can't find a terminal?**
+- They spawn randomly (0.005% chance)
+- Keep exploring in different directions
+- The world is infinite - keep moving!
 
----
+## Learn More
 
-## 📝 Cartridge Format Cheat Sheet
-
-```
-NODEID Question or statement text
-TARGETID Answer option 1
-TARGETID Answer option 2
-
-TARGETID Next question or statement
-TARGETID Answer A
-TARGETID Answer B
-```
-
-**Rules:**
-- ✅ First node = 203658
-- ✅ 6-digit node IDs
-- ✅ 0-2 answers per question
-- ✅ Use 000000 to ignore/end
-- ✅ Can loop back to any node
+See **ANALYSIS.md** for complete technical documentation including:
+- Full encryption details
+- Game mechanics
+- Cartridge format specification
+- Advanced usage examples
 
 ---
 
-## 🎯 Example Node IDs
-
-| ID | Purpose |
-|----|---------|
-| 203658 | START (required) |
-| 111111 | Path A |
-| 222222 | Path B |
-| 333333 | Path C |
-| 999999 | Ending |
-| 000000 | Ignored/End |
-
----
-
-## 🔧 Tools Provided
-
-| File | Purpose |
-|------|---------|
-| **cartridge_tool.html** | Visual tool for encryption/decryption |
-| **console_script.js** | Console commands for quick use |
-| **COMPLETE_ANALYSIS.md** | Full technical documentation |
-| **cartridge_analysis.md** | Encryption details |
-| **EXAMPLE_CARTRIDGE.txt** | Ready-to-use example |
-
----
-
-## 💡 Pro Tips
-
-1. **Test your cartridge** - Decrypt it first to verify format
-2. **Keep it simple** - Start with 3-5 nodes
-3. **Use 203658** - Always include a way back to start
-4. **Save your work** - Keep the decrypted version
-5. **Share cartridges** - Exchange with other players
-
----
-
-## 🆘 Troubleshooting
-
-### "invalid cartridge" Error
-```javascript
-// Check if your cartridge has node 203658
-decryptCartridge("YOUR_CARTRIDGE").then(text => {
-  console.log(text.includes("203658") ? "✅ Has 203658" : "❌ Missing 203658");
-});
-```
-
-### Can't Find Terminal
-- Keep exploring (they're rare)
-- Try different directions
-- The world generates as you move
-
-### Coordinates Keep Changing
-- This is normal!
-- The numbers are decorative
-- Not related to cartridges
-
----
-
-## 📚 Learn More
-
-- **COMPLETE_ANALYSIS.md** - Full code analysis
-- **cartridge_analysis.md** - Encryption details
-- **console_script.js** - See the code
-
----
-
-## 🎉 Ready to Play!
-
-1. Generate example cartridge
-2. Find terminal in game
-3. Paste and run
-4. Enjoy the adventure!
-
-**Have fun exploring! 🌲✨**
+**Ready to create? Visit https://eliseyrotar.github.io/203658.xyz/**
