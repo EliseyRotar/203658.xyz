@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width"><title>https://203658.xyz/</title><link rel="stylesheet" type="text/css" href="resource://content-accessible/viewsource.css"></head><body id="viewsource" style="tab-size: 4"><span id="line1"><span></span><span class="doctype">&lt;!DOCTYPE html&gt;</span><span>
+</span></span><span id="line2"><span></span><span>&lt;<span class="start-tag">html</span> <span class="attribute-name">lang</span>="<a class="attribute-value">en</a>"&gt;</span><span>
+</span></span><span id="line3"><span></span><span>&lt;<span class="start-tag">head</span>&gt;</span><span>
+</span></span><span id="line4"><span></span><span>&lt;<span class="start-tag">meta</span> <span class="attribute-name">charset</span>="<a class="attribute-value">UTF-8</a>"&gt;</span><span>
+</span></span><span id="line5"><span></span><span>&lt;<span class="start-tag">meta</span> <span class="attribute-name">name</span>="<a class="attribute-value">viewport</a>" <span class="attribute-name">content</span>="<a class="attribute-value">width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no</a>"&gt;</span><span>
+</span></span><span id="line6"><span></span><span>&lt;<span class="start-tag">title</span>&gt;</span><span>xqr</span><span>&lt;/<span class="end-tag">title</span>&gt;</span><span>
+</span></span><span id="line7"><span></span><span>&lt;<span class="start-tag">style</span>&gt;</span><span>
+</span></span><span id="line8"><span>* { margin: 0; padding: 0; box-sizing: border-box; }
+</span></span><span id="line9"><span>html, body { background: #1e1e1e; width: 100%; height: 100%; overflow: hidden; }
+</span></span><span id="line10"><span>#game {
+</span></span><span id="line11"><span>  font-family: monospace;
+</span></span><span id="line12"><span>  font-size: 14px;
+</span></span><span id="line13"><span>  line-height: 1.2;
+</span></span><span id="line14"><span>  color: #fff;
+</span></span><span id="line15"><span>  background: #1e1e1e;
+</span></span><span id="line16"><span>  width: 100vw;
+</span></span><span id="line17"><span>  height: 100vh;
+</span></span><span id="line18"><span>  overflow: hidden;
+</span></span><span id="line19"><span>  user-select: none;
+</span></span><span id="line20"><span>  -webkit-user-select: none;
+</span></span><span id="line21"><span>  outline: none;
+</span></span><span id="line22"><span>  position: relative;
+</span></span><span id="line23"><span>}
+</span></span><span id="line24"><span>pre { white-space: pre; display: block; }
+</span></span><span id="line25"><span>
+</span></span><span id="line26"><span></span><span>&lt;/<span class="end-tag">style</span>&gt;</span><span>
+</span></span><span id="line27"><span></span><span>&lt;<span class="start-tag">script</span> <span class="attribute-name">defer</span> <span class="attribute-name">src</span>="<a class="attribute-value" href="view-source:https://cloud.umami.is/script.js">https://cloud.umami.is/script.js</a>" <span class="attribute-name">data-website-id</span>="<a class="attribute-value">b2a80c91-e71a-43e1-acad-f568204fd976</a>"&gt;</span><span></span><span>&lt;/<span class="end-tag">script</span>&gt;</span><span>
+</span></span><span id="line28"><span></span><span>&lt;/<span class="end-tag">head</span>&gt;</span><span>
+</span></span><span id="line29"><span></span><span>&lt;<span class="start-tag">body</span>&gt;</span><span>
+</span></span><span id="line30"><span></span><span>&lt;<span class="start-tag">div</span> <span class="attribute-name">id</span>="<a class="attribute-value">game</a>" <span class="attribute-name">tabindex</span>="<a class="attribute-value">0</a>"&gt;</span><span></span><span>&lt;<span class="start-tag">pre</span> <span class="attribute-name">id</span>="<a class="attribute-value">canvas</a>"&gt;</span><span></span><span>&lt;/<span class="end-tag">pre</span>&gt;</span><span></span><span>&lt;/<span class="end-tag">div</span>&gt;</span><span>
+</span></span><span id="line31"><span></span><span>&lt;<span class="start-tag">script</span>&gt;</span><span>const _S=JSON.parse(atob('WyJQQktERjIiLCJBRVMtR0NNIiwiU0hBLTI1NiIsImVuYy1zYWx0IiwiZGVyaXZlS2V5IiwiZGVjcnlwdCIsInJhdyIsImd6aXAiLCJ1bmludGVyZXN0aW5nMjA1NDM2NzA1Mzg0Il0='));
+</span></span><span id="line32"><span>
+</span></span><span id="line33"><span>const dj   = document.getElementById('game');
+</span></span><span id="line34"><span>const bx = document.getElementById('canvas');
+</span></span><span id="line35"><span>const f = [
+</span></span><span id="line36"><span>  '   /\\  ',
+</span></span><span id="line37"><span>  '  /  \\ ',
+</span></span><span id="line38"><span>  '  /  \\ ',
+</span></span><span id="line39"><span>  ' /    \\',
+</span></span><span id="line40"><span>  ' /    \\',
+</span></span><span id="line41"><span>  '/______\\',
+</span></span><span id="line42"><span>  '   ||  ',
+</span></span><span id="line43"><span>];
+</span></span><span id="line44"><span>const h = [
+</span></span><span id="line45"><span>  '  /\\ ',
+</span></span><span id="line46"><span>  ' /  \\',
+</span></span><span id="line47"><span>  ' /  \\',
+</span></span><span id="line48"><span>  '/____\\',
+</span></span><span id="line49"><span>  '  || ',
+</span></span><span id="line50"><span>];
+</span></span><span id="line51"><span>
+</span></span><span id="line52"><span>const d = [
+</span></span><span id="line53"><span>  '╓────────────────────────╖',
+</span></span><span id="line54"><span>  '║ -- insert cartridge -- ║',
+</span></span><span id="line55"><span>  '║ ┌─────────────┐┌─────┐ ║',
+</span></span><span id="line56"><span>  '║ │             ││ run │ ║',
+</span></span><span id="line57"><span>  '║ └─────────────┘└─────┘ ║',
+</span></span><span id="line58"><span>  '╙────────────────────────╜',
+</span></span><span id="line59"><span>];
+</span></span><span id="line60"><span>const b = 'invalid cartridge';
+</span></span><span id="line61"><span>const e = 26;
+</span></span><span id="line62"><span>const c = 6;
+</span></span><span id="line63"><span>
+</span></span><span id="line64"><span>const j = 22;
+</span></span><span id="line65"><span>const a = 17;
+</span></span><span id="line66"><span>
+</span></span><span id="line67"><span>function hg(ef) {
+</span></span><span id="line68"><span>  const fz = [];
+</span></span><span id="line69"><span>  for (let eb = 0; eb </span><span>&lt; </span><span>ef.length; eb++) {
+</span></span><span id="line70"><span>    const ec = ef[eb];
+</span></span><span id="line71"><span>    if (eb === ef.length - 1) {
+</span></span><span id="line72"><span>      const ar = new Set();
+</span></span><span id="line73"><span>      for (let ce = 0; ce </span><span>&lt; </span><span>ec.length; ce++) if (ec[ce] === '|') ar.add(ce);
+</span></span><span id="line74"><span>      fz.push({ type: 'q', _tc: ar });
+</span></span><span id="line75"><span>    } else {
+</span></span><span id="line76"><span>      let ea = -1, fp = -1;
+</span></span><span id="line77"><span>      for (let ce = 0; ce </span><span>&lt; </span><span>ec.length; ce++) {
+</span></span><span id="line78"><span>        if (ec[ce] !== ' ') { if (ea === -1) ea = ce; fp = ce; }
+</span></span><span id="line79"><span>      }
+</span></span><span id="line80"><span>      fz.push(ea === -1 ? null : { type: 'z', left: ea, right: fp });
+</span></span><span id="line81"><span>    }
+</span></span><span id="line82"><span>  }
+</span></span><span id="line83"><span>  return fz;
+</span></span><span id="line84"><span>}
+</span></span><span id="line85"><span>
+</span></span><span id="line86"><span>const k = {
+</span></span><span id="line87"><span>  g: { lines: f, w: 8, h: f.length, spans: hg(f) },
+</span></span><span id="line88"><span>  f: { lines: h, w: 6, h: h.length, spans: hg(h) },
+</span></span><span id="line89"><span>};
+</span></span><span id="line90"><span>
+</span></span><span id="line91"><span>let cc = 8.4, cb = 16.8;
+</span></span><span id="line92"><span>function ab() {
+</span></span><span id="line93"><span>  const gj = document.createElement('pre');
+</span></span><span id="line94"><span>  gj.style.cssText = "position:absolute;visibility:hidden;font-family:monospace;font-size:14px;line-height:1.2;";
+</span></span><span id="line95"><span>  gj.textContent = 'X';
+</span></span><span id="line96"><span>  document.body.appendChild(gj);
+</span></span><span id="line97"><span>  const fi = gj.getBoundingClientRect();
+</span></span><span id="line98"><span>  cc = fi.width || 8.4;
+</span></span><span id="line99"><span>  cb = fi.height || 16.8;
+</span></span><span id="line100"><span>  document.body.removeChild(gj);
+</span></span><span id="line101"><span>}
+</span></span><span id="line102"><span>ab();
+</span></span><span id="line103"><span>
+</span></span><span id="line104"><span>function v() { return Math.floor(window.innerWidth  / cc); }
+</span></span><span id="line105"><span>function y() { return Math.floor(window.innerHeight / cb); }
+</span></span><span id="line106"><span>
+</span></span><span id="line107"><span>let dx = [], es = [], bz = [];
+</span></span><span id="line108"><span>let ak = 0, al = 0;
+</span></span><span id="line109"><span>let ah = '000000';
+</span></span><span id="line110"><span>const l = 16;
+</span></span><span id="line111"><span>const w = new Set();
+</span></span><span id="line112"><span>
+</span></span><span id="line113"><span>function x() {
+</span></span><span id="line114"><span>  return String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
+</span></span><span id="line115"><span>}
+</span></span><span id="line116"><span>
+</span></span><span id="line117"><span>function ag(gy, gz, gr, dk) {
+</span></span><span id="line118"><span>  for (const gd of dx) {
+</span></span><span id="line119"><span>    const gh = k[gd.type];
+</span></span><span id="line120"><span>    if (gy + gr + 2 &gt; gd.wx &amp;&amp; gy </span><span>&lt; </span><span>gd.wx + gh.w + 2 &amp;&amp;
+</span></span><span id="line121"><span>        gz + dk + 1 &gt; gd.wy &amp;&amp; gz </span><span>&lt; </span><span>gd.wy + gh.h + 1) return true;
+</span></span><span id="line122"><span>  }
+</span></span><span id="line123"><span>  for (const bs of bz) {
+</span></span><span id="line124"><span>    if (gy + gr + 2 &gt; bs.wx &amp;&amp; gy </span><span>&lt; </span><span>bs.wx + e + 2 &amp;&amp;
+</span></span><span id="line125"><span>        gz + dk + 1 &gt; bs.wy &amp;&amp; gz </span><span>&lt; </span><span>bs.wy + c + 2) return true;
+</span></span><span id="line126"><span>  }
+</span></span><span id="line127"><span>  return false;
+</span></span><span id="line128"><span>}
+</span></span><span id="line129"><span>
+</span></span><span id="line130"><span>function af(gy, gz) {
+</span></span><span id="line131"><span>  for (const gd of dx) {
+</span></span><span id="line132"><span>    const gh = k[gd.type];
+</span></span><span id="line133"><span>    if (gy + e + 2 &gt; gd.wx &amp;&amp; gy </span><span>&lt; </span><span>gd.wx + gh.w + 2 &amp;&amp;
+</span></span><span id="line134"><span>        gz + c + 2 &gt; gd.wy &amp;&amp; gz </span><span>&lt; </span><span>gd.wy + gh.h + 1) return true;
+</span></span><span id="line135"><span>  }
+</span></span><span id="line136"><span>  for (const bs of bz) {
+</span></span><span id="line137"><span>    if (gy + e + 2 &gt; bs.wx - 2 &amp;&amp; gy </span><span>&lt; </span><span>bs.wx + e + 2 &amp;&amp;
+</span></span><span id="line138"><span>        gz + c + 2 &gt; bs.wy - 2 &amp;&amp; gz </span><span>&lt; </span><span>bs.wy + c + 2) return true;
+</span></span><span id="line139"><span>  }
+</span></span><span id="line140"><span>  return false;
+</span></span><span id="line141"><span>}
+</span></span><span id="line142"><span>
+</span></span><span id="line143"><span>function aj(hb, hc, he, hf) {
+</span></span><span id="line144"><span>  if (hc </span><span>&lt;=</span><span> hb || hf </span><span>&lt;=</span><span> he) return;
+</span></span><span id="line145"><span>  for (let gy = hb; gy </span><span>&lt; </span><span>hc; gy++)
+</span></span><span id="line146"><span>    for (let gz = he; gz </span><span>&lt; </span><span>hf; gz++) {
+</span></span><span id="line147"><span>      if (Math.random() &gt; 0.007) continue;
+</span></span><span id="line148"><span>      const gm = Math.random() </span><span>&lt; </span><span>0.65 ? 'f' : 'g';
+</span></span><span id="line149"><span>      if (!ag(gy, gz, k[gm].w, k[gm].h)) dx.push({ type: gm, wx: gy, wy: gz });
+</span></span><span id="line150"><span>    }
+</span></span><span id="line151"><span>  for (let gy = hb; gy </span><span>&lt; </span><span>hc; gy++)
+</span></span><span id="line152"><span>    for (let gz = he; gz </span><span>&lt; </span><span>hf; gz++) {
+</span></span><span id="line153"><span>      if (Math.random() &gt; 0.007) continue;
+</span></span><span id="line154"><span>      es.push({ wx: gy, wy: gz });
+</span></span><span id="line155"><span>    }
+</span></span><span id="line156"><span>  const bm = (hc - hb) * (hf - he);
+</span></span><span id="line157"><span>  if (Math.random() </span><span>&lt; </span><span>bm * 0.00005) {
+</span></span><span id="line158"><span>    for (let bn = 0; bn </span><span>&lt; </span><span>20; bn++) {
+</span></span><span id="line159"><span>      const gy = hb + Math.floor(Math.random() * Math.max(1, hc - hb - 26));
+</span></span><span id="line160"><span>      const gz = he + Math.floor(Math.random() * Math.max(1, hf - he - 8));
+</span></span><span id="line161"><span>      if (!af(gy, gz)) {
+</span></span><span id="line162"><span>        const by = {
+</span></span><span id="line163"><span>          wx: gy, wy: gz,
+</span></span><span id="line164"><span>          state: 'idle',
+</span></span><span id="line165"><span>          val: '',
+</span></span><span id="line166"><span>          nodes: {},
+</span></span><span id="line167"><span>          curNode: '',
+</span></span><span id="line168"><span>
+</span></span><span id="line169"><span>          answers: [],
+</span></span><span id="line170"><span>
+</span></span><span id="line171"><span>          el: null,
+</span></span><span id="line172"><span>          showErr: false,
+</span></span><span id="line173"><span>        };
+</span></span><span id="line174"><span>        bz.push(by);
+</span></span><span id="line175"><span>        ac(by);
+</span></span><span id="line176"><span>        break;
+</span></span><span id="line177"><span>      }
+</span></span><span id="line178"><span>    }
+</span></span><span id="line179"><span>  }
+</span></span><span id="line180"><span>}
+</span></span><span id="line181"><span>
+</span></span><span id="line182"><span>function bd(cl, fr) {
+</span></span><span id="line183"><span>  const dm = Math.ceil(cl / 2) + 20;
+</span></span><span id="line184"><span>  const dl = Math.ceil(fr / 2) + 20;
+</span></span><span id="line185"><span>  return { minX: ak - dm, maxX: ak + dm, minY: al - dl, maxY: al + dl };
+</span></span><span id="line186"><span>}
+</span></span><span id="line187"><span>
+</span></span><span id="line188"><span>function u() {
+</span></span><span id="line189"><span>  const cl = v(), fr = y();
+</span></span><span id="line190"><span>  const { minX: ek, maxX: eh, minY: el, maxY: ei } = bd(cl, fr);
+</span></span><span id="line191"><span>  const cq = Math.floor(ek / l), cr = Math.floor((eh - 1) / l);
+</span></span><span id="line192"><span>  const ct = Math.floor(el / l), cu = Math.floor((ei - 1) / l);
+</span></span><span id="line193"><span>  for (let cs = ct; cs </span><span>&lt;=</span><span> cu; cs++)
+</span></span><span id="line194"><span>    for (let cp = cq; cp </span><span>&lt;=</span><span> cr; cp++) {
+</span></span><span id="line195"><span>      const dv = cp + ',' + cs;
+</span></span><span id="line196"><span>      if (w.has(dv)) continue;
+</span></span><span id="line197"><span>      w.add(dv);
+</span></span><span id="line198"><span>      aj(cp * l, cp * l + l, cs * l, cs * l + l);
+</span></span><span id="line199"><span>    }
+</span></span><span id="line200"><span>}
+</span></span><span id="line201"><span>
+</span></span><span id="line202"><span>function s() {
+</span></span><span id="line203"><span>  const cl = v(), fr = y();
+</span></span><span id="line204"><span>  const dm = Math.ceil(cl / 2) + 60, dl = Math.ceil(fr / 2) + 60;
+</span></span><span id="line205"><span>  const ek = ak - dm, eh = ak + dm;
+</span></span><span id="line206"><span>  const el = al - dl, ei = al + dl;
+</span></span><span id="line207"><span>  dx = dx.filter(gd =&gt; gd.wx &gt; ek &amp;&amp; gd.wx </span><span>&lt; </span><span>eh &amp;&amp; gd.wy &gt; el &amp;&amp; gd.wy </span><span>&lt; </span><span>ei);
+</span></span><span id="line208"><span>  es = es.filter(bo =&gt; bo.wx &gt; ek &amp;&amp; bo.wx </span><span>&lt; </span><span>eh &amp;&amp; bo.wy &gt; el &amp;&amp; bo.wy </span><span>&lt; </span><span>ei);
+</span></span><span id="line209"><span>  bz = bz.filter(bs =&gt; {
+</span></span><span id="line210"><span>    const du = bs.wx &gt; ek &amp;&amp; bs.wx </span><span>&lt; </span><span>eh &amp;&amp; bs.wy &gt; el &amp;&amp; bs.wy </span><span>&lt; </span><span>ei;
+</span></span><span id="line211"><span>    if (!du &amp;&amp; bs.el) { bs.el.remove(); bs.el = null; }
+</span></span><span id="line212"><span>    return du;
+</span></span><span id="line213"><span>  });
+</span></span><span id="line214"><span>  const cf = Math.floor(ek / l) - 1, cg = Math.floor(eh / l) + 1;
+</span></span><span id="line215"><span>  const ch = Math.floor(el / l) - 1, ci = Math.floor(ei / l) + 1;
+</span></span><span id="line216"><span>  for (const dv of w) {
+</span></span><span id="line217"><span>    const [cp, cs] = dv.split(',').map(Number);
+</span></span><span id="line218"><span>    if (cp </span><span>&lt; </span><span>cf || cp &gt; cg || cs </span><span>&lt; </span><span>ch || cs &gt; ci) w.delete(dv);
+</span></span><span id="line219"><span>  }
+</span></span><span id="line220"><span>}
+</span></span><span id="line221"><span>
+</span></span><span id="line222"><span>function an(gd, gy, gz) {
+</span></span><span id="line223"><span>  const gh = k[gd.type];
+</span></span><span id="line224"><span>  const eb = gz - gd.wy; if (eb </span><span>&lt; </span><span>0 || eb &gt;= gh.h) return 'n';
+</span></span><span id="line225"><span>  const ce = gy - gd.wx; if (ce </span><span>&lt; </span><span>0 || ce &gt;= gh.w) return 'n';
+</span></span><span id="line226"><span>  const fy = gh.spans[eb];
+</span></span><span id="line227"><span>  if (!fy) return 'n';
+</span></span><span id="line228"><span>  if (fy.type === 'q') return fy._tc.has(ce) ? 'q' : 'n';
+</span></span><span id="line229"><span>  return (ce &gt;= fy.left &amp;&amp; ce </span><span>&lt;=</span><span> fy.right) ? 'z' : 'n';
+</span></span><span id="line230"><span>}
+</span></span><span id="line231"><span>
+</span></span><span id="line232"><span>const i = _S[8];
+</span></span><span id="line233"><span>
+</span></span><span id="line234"><span>async function cx(fg) {
+</span></span><span id="line235"><span>  const df = new TextEncoder();
+</span></span><span id="line236"><span>  const fk = await crypto.subtle.importKey(_S[6], df.encode(fg), _S[0], false, [_S[4]]);
+</span></span><span id="line237"><span>  return crypto.subtle.deriveKey(
+</span></span><span id="line238"><span>    { name: _S[0], salt: df.encode(_S[3]), iterations: 100000, hash: _S[2] },
+</span></span><span id="line239"><span>    fk, { name: _S[1], length: 256 }, false, [_S[5]]
+</span></span><span id="line240"><span>  );
+</span></span><span id="line241"><span>}
+</span></span><span id="line242"><span>
+</span></span><span id="line243"><span>async function cv(br) {
+</span></span><span id="line244"><span>  const da = new DecompressionStream(_S[7]);
+</span></span><span id="line245"><span>  const gx = da.writable.getWriter();
+</span></span><span id="line246"><span>  gx.write(br); gx.close();
+</span></span><span id="line247"><span>  const cd = [], fl = da.readable.getReader();
+</span></span><span id="line248"><span>  while (true) {
+</span></span><span id="line249"><span>    const { done: cz, value: gq } = await fl.read();
+</span></span><span id="line250"><span>    if (cz) break;
+</span></span><span id="line251"><span>    cd.push(gq);
+</span></span><span id="line252"><span>  }
+</span></span><span id="line253"><span>  const ev = new Uint8Array(cd.reduce((be, bs) =&gt; be + bs.length, 0));
+</span></span><span id="line254"><span>  let et = 0;
+</span></span><span id="line255"><span>  for (const bs of cd) { ev.set(bs, et); et += bs.length; }
+</span></span><span id="line256"><span>  return ev;
+</span></span><span id="line257"><span>}
+</span></span><span id="line258"><span>
+</span></span><span id="line259"><span>async function cw(dg) {
+</span></span><span id="line260"><span>  const [ds, co] = dg.trim().split(':');
+</span></span><span id="line261"><span>  const dr  = Uint8Array.from(atob(ds), bs =&gt; bs.charCodeAt(0));
+</span></span><span id="line262"><span>  const cn  = Uint8Array.from(atob(co), bs =&gt; bs.charCodeAt(0));
+</span></span><span id="line263"><span>  const dv = await cx(i);
+</span></span><span id="line264"><span>  const fc = await crypto.subtle.decrypt({ name: _S[1], iv: dr }, dv, cn);
+</span></span><span id="line265"><span>  return new TextDecoder().decode(await cv(new Uint8Array(fc)));
+</span></span><span id="line266"><span>}
+</span></span><span id="line267"><span>
+</span></span><span id="line268"><span>const g = 1582;
+</span></span><span id="line269"><span>
+</span></span><span id="line270"><span>function ey(fk) {
+</span></span><span id="line271"><span>  const eq = {};
+</span></span><span id="line272"><span>  const ef = fk.split('\n').map(dy =&gt; dy.trim()).filter(dy =&gt; /^\d{6} /.test(dy));
+</span></span><span id="line273"><span>  for (let dn = 0; dn </span><span>&lt; </span><span>ef.length; dn += 3) {
+</span></span><span id="line274"><span>    if (ef[dn].startsWith('000000')) continue;
+</span></span><span id="line275"><span>    const [en, ...ep] = ef[dn].split(' ');
+</span></span><span id="line276"><span>    const eo = ep.join(' ');
+</span></span><span id="line277"><span>    if (eo.length &gt; g) throw new Error();
+</span></span><span id="line278"><span>    const bl = [];
+</span></span><span id="line279"><span>    for (let dt = dn + 1; dt </span><span>&lt; </span><span>dn + 3 &amp;&amp; dt </span><span>&lt; </span><span>ef.length; dt++) {
+</span></span><span id="line280"><span>      if (ef[dt].startsWith('000000')) continue;
+</span></span><span id="line281"><span>      const [gf, ...bi] = ef[dt].split(' ');
+</span></span><span id="line282"><span>      const bh = bi.join(' ');
+</span></span><span id="line283"><span>      if (bh.length &gt; g) throw new Error();
+</span></span><span id="line284"><span>      bl.push({ target: gf, text: bh });
+</span></span><span id="line285"><span>    }
+</span></span><span id="line286"><span>    eq[en] = { text: eo, answers: bl };
+</span></span><span id="line287"><span>  }
+</span></span><span id="line288"><span>  return eq;
+</span></span><span id="line289"><span>}
+</span></span><span id="line290"><span>
+</span></span><span id="line291"><span>function gw(gi, gt) {
+</span></span><span id="line292"><span>  const gv = gi.split(' ');
+</span></span><span id="line293"><span>  const ef = []; let ec = '';
+</span></span><span id="line294"><span>  for (const gu of gv) {
+</span></span><span id="line295"><span>    if (!ec) { ec = gu; }
+</span></span><span id="line296"><span>    else if ((ec + ' ' + gu).length </span><span>&lt;=</span><span> gt) { ec += ' ' + gu; }
+</span></span><span id="line297"><span>    else { ef.push(ec); ec = gu; }
+</span></span><span id="line298"><span>  }
+</span></span><span id="line299"><span>  if (ec) ef.push(ec);
+</span></span><span id="line300"><span>  return ef;
+</span></span><span id="line301"><span>}
+</span></span><span id="line302"><span>
+</span></span><span id="line303"><span>function cm(gc, gt) {
+</span></span><span id="line304"><span>  const gk = gt - gc.length;
+</span></span><span id="line305"><span>  const ea  = Math.floor(gk / 2);
+</span></span><span id="line306"><span>  return ' '.repeat(ea) + gc + ' '.repeat(gk - ea);
+</span></span><span id="line307"><span>}
+</span></span><span id="line308"><span>
+</span></span><span id="line309"><span>function fo(gi) {
+</span></span><span id="line310"><span>  const ef = gw(gi, j);
+</span></span><span id="line311"><span>  if (ef.length &gt; 1) {
+</span></span><span id="line312"><span>    const dz = ef[ef.length - 1];
+</span></span><span id="line313"><span>    if (!dz.includes(' ')) {
+</span></span><span id="line314"><span>      const fe = ef[ef.length - 2].split(' ');
+</span></span><span id="line315"><span>      if (fe.length &gt; 2) {
+</span></span><span id="line316"><span>        ef[ef.length - 1] = fe.pop() + ' ' + dz;
+</span></span><span id="line317"><span>        ef[ef.length - 2] = fe.join(' ');
+</span></span><span id="line318"><span>      }
+</span></span><span id="line319"><span>    }
+</span></span><span id="line320"><span>  }
+</span></span><span id="line321"><span>  const ev = ['╓────────────────────────╖'];
+</span></span><span id="line322"><span>  for (const dy of ef) ev.push('║ ' + cm(dy, j) + ' ║');
+</span></span><span id="line323"><span>  ev.push('╙────────────────────────╜');
+</span></span><span id="line324"><span>  return ev;
+</span></span><span id="line325"><span>}
+</span></span><span id="line326"><span>
+</span></span><span id="line327"><span>function fn(gi) {
+</span></span><span id="line328"><span>  const ej = Math.max(...gi.split(' ').map(gr =&gt; gr.length));
+</span></span><span id="line329"><span>  let ef = gw(gi, a);
+</span></span><span id="line330"><span>  const gg = ef.length;
+</span></span><span id="line331"><span>  for (let gr = a - 1; gr &gt;= ej; gr--) {
+</span></span><span id="line332"><span>    const bw = gw(gi, gr);
+</span></span><span id="line333"><span>    if (bw.length &gt; gg) break;
+</span></span><span id="line334"><span>    ef = bw;
+</span></span><span id="line335"><span>  }
+</span></span><span id="line336"><span>  const gr = Math.max(...ef.map(dy =&gt; dy.length));
+</span></span><span id="line337"><span>  const bp = '─'.repeat(gr + 2);
+</span></span><span id="line338"><span>  const ev = ['┌' + bp + '┐'];
+</span></span><span id="line339"><span>  for (const dy of ef) ev.push('│ ' + cm(dy, gr) + ' │');
+</span></span><span id="line340"><span>  ev.push('└' + bp + '┘');
+</span></span><span id="line341"><span>  return ev;
+</span></span><span id="line342"><span>}
+</span></span><span id="line343"><span>
+</span></span><span id="line344"><span>function r(by, en) {
+</span></span><span id="line345"><span>  const em = by.nodes[en];
+</span></span><span id="line346"><span>  if (!em) return;
+</span></span><span id="line347"><span>  by.state = 'question';
+</span></span><span id="line348"><span>  by.curNode = en;
+</span></span><span id="line349"><span>  by.showErr = false;
+</span></span><span id="line350"><span>
+</span></span><span id="line351"><span>  ga(em.text);
+</span></span><span id="line352"><span>
+</span></span><span id="line353"><span>  const fh = fo(em.text);
+</span></span><span id="line354"><span>
+</span></span><span id="line355"><span>  const fx = [{ lines: fh, col: 0, row: 0 }];
+</span></span><span id="line356"><span>  const bk = [];
+</span></span><span id="line357"><span>
+</span></span><span id="line358"><span>  let fq = fh.length;
+</span></span><span id="line359"><span>
+</span></span><span id="line360"><span>  for (const bj of em.answers) {
+</span></span><span id="line361"><span>    const bf = fn(bj.text);
+</span></span><span id="line362"><span>    const bg = bf[0].length;
+</span></span><span id="line363"><span>    const eu = Math.floor((26 - bg) / 2);
+</span></span><span id="line364"><span>    bk.push({ row: fq, col: eu, w: bg, h: bf.length, nodeId: bj.target });
+</span></span><span id="line365"><span>    fx.push({ lines: bf, col: eu, row: fq });
+</span></span><span id="line366"><span>    fq += bf.length;
+</span></span><span id="line367"><span>  }
+</span></span><span id="line368"><span>
+</span></span><span id="line369"><span>  by.qSegments = fx;
+</span></span><span id="line370"><span>  by.answers = bk;
+</span></span><span id="line371"><span>
+</span></span><span id="line372"><span>  if (by.el) { by.el.style.display = 'none'; by.el.classList.remove('visible'); }
+</span></span><span id="line373"><span>}
+</span></span><span id="line374"><span>
+</span></span><span id="line375"><span>function ba() {
+</span></span><span id="line376"><span>  try {
+</span></span><span id="line377"><span>    const gn = new SpeechSynthesisUtterance(' ');
+</span></span><span id="line378"><span>    gn.volume = 0;
+</span></span><span id="line379"><span>    gn.rate = 10;
+</span></span><span id="line380"><span>    window.speechSynthesis.speak(gn);
+</span></span><span id="line381"><span>  } catch {}
+</span></span><span id="line382"><span>}
+</span></span><span id="line383"><span>
+</span></span><span id="line384"><span>function ga(gi) {
+</span></span><span id="line385"><span>  window.speechSynthesis.cancel();
+</span></span><span id="line386"><span>  const go = new SpeechSynthesisUtterance(gi);
+</span></span><span id="line387"><span>  go.rate = 1.08;
+</span></span><span id="line388"><span>  const gl = () =&gt; {
+</span></span><span id="line389"><span>    const gs = window.speechSynthesis.getVoices().find(gp =&gt; gp.name === 'Whisper');
+</span></span><span id="line390"><span>    if (gs) go.voice = gs;
+</span></span><span id="line391"><span>    window.speechSynthesis.speak(go);
+</span></span><span id="line392"><span>  };
+</span></span><span id="line393"><span>  window.speechSynthesis.getVoices().length ? gl()
+</span></span><span id="line394"><span>    : (window.speechSynthesis.onvoiceschanged = gl);
+</span></span><span id="line395"><span>}
+</span></span><span id="line396"><span>
+</span></span><span id="line397"><span>function ac(by) {
+</span></span><span id="line398"><span>  const de = document.createElement('div');
+</span></span><span id="line399"><span>  de.className = 'cart-input-el';
+</span></span><span id="line400"><span>  de.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;width:0;height:0;';
+</span></span><span id="line401"><span>
+</span></span><span id="line402"><span>  const ge = document.createElement('textarea');
+</span></span><span id="line403"><span>  ge.rows = 1;
+</span></span><span id="line404"><span>  ge.setAttribute('spellcheck', 'false');
+</span></span><span id="line405"><span>  ge.setAttribute('autocomplete', 'off');
+</span></span><span id="line406"><span>  ge.setAttribute('autocapitalize', 'none');
+</span></span><span id="line407"><span>  ge.setAttribute('autocorrect', 'off');
+</span></span><span id="line408"><span>  ge.setAttribute('inputmode', 'verbatim');
+</span></span><span id="line409"><span>  ge.value = by.val || '';
+</span></span><span id="line410"><span>  ge.style.cssText = [
+</span></span><span id="line411"><span>    'pointer-events:auto',
+</span></span><span id="line412"><span>    'position:absolute',
+</span></span><span id="line413"><span>    'background:transparent',
+</span></span><span id="line414"><span>    'color:#fff',
+</span></span><span id="line415"><span>    'caret-color:#fff',
+</span></span><span id="line416"><span>    'border:none',
+</span></span><span id="line417"><span>    'outline:none',
+</span></span><span id="line418"><span>    'resize:none',
+</span></span><span id="line419"><span>    'overflow:hidden',
+</span></span><span id="line420"><span>    'padding:0',
+</span></span><span id="line421"><span>    'margin:0',
+</span></span><span id="line422"><span>    'font-family:monospace',
+</span></span><span id="line423"><span>    'font-size:14px',
+</span></span><span id="line424"><span>    'line-height:1.2',
+</span></span><span id="line425"><span>    'user-select:text',
+</span></span><span id="line426"><span>    '-webkit-user-select:text',
+</span></span><span id="line427"><span>  ].join(';');
+</span></span><span id="line428"><span>  ge.addEventListener('keydown', dd =&gt; {
+</span></span><span id="line429"><span>    if (dd.key === 'Enter') { dd.preventDefault(); ba(); ao(by); }
+</span></span><span id="line430"><span>    dd.stopPropagation();
+</span></span><span id="line431"><span>  });
+</span></span><span id="line432"><span>  ge.addEventListener('input', () =&gt; { by.val = ge.value; });
+</span></span><span id="line433"><span>
+</span></span><span id="line434"><span>  ge.addEventListener('paste', dd =&gt; {
+</span></span><span id="line435"><span>    const fa = dd.clipboardData &amp;&amp; dd.clipboardData.getData('text');
+</span></span><span id="line436"><span>    if (fa) {
+</span></span><span id="line437"><span>      dd.preventDefault();
+</span></span><span id="line438"><span>      ge.value = fa;
+</span></span><span id="line439"><span>      by.val = fa;
+</span></span><span id="line440"><span>    }
+</span></span><span id="line441"><span>  });
+</span></span><span id="line442"><span>  ge.addEventListener('touchstart', dd =&gt; dd.stopPropagation());
+</span></span><span id="line443"><span>  ge.addEventListener('mousedown', dd =&gt; dd.stopPropagation());
+</span></span><span id="line444"><span>  by.ta = ge;
+</span></span><span id="line445"><span>  de.appendChild(ge);
+</span></span><span id="line446"><span>
+</span></span><span id="line447"><span>  const bq = document.createElement('button');
+</span></span><span id="line448"><span>  bq.style.cssText = [
+</span></span><span id="line449"><span>    'pointer-events:auto',
+</span></span><span id="line450"><span>    'position:absolute',
+</span></span><span id="line451"><span>    'background:transparent',
+</span></span><span id="line452"><span>    'color:transparent',
+</span></span><span id="line453"><span>    'border:none',
+</span></span><span id="line454"><span>    'outline:none',
+</span></span><span id="line455"><span>    'padding:0',
+</span></span><span id="line456"><span>    'margin:0',
+</span></span><span id="line457"><span>    'cursor:pointer',
+</span></span><span id="line458"><span>    'font-size:0',
+</span></span><span id="line459"><span>  ].join(';');
+</span></span><span id="line460"><span>  bq.addEventListener('click', dd =&gt; { dd.stopPropagation(); ba(); ao(by); });
+</span></span><span id="line461"><span>  bq.addEventListener('mousedown', dd =&gt; dd.stopPropagation());
+</span></span><span id="line462"><span>  bq.addEventListener('touchstart', dd =&gt; dd.stopPropagation());
+</span></span><span id="line463"><span>  by.btn = bq;
+</span></span><span id="line464"><span>  de.appendChild(bq);
+</span></span><span id="line465"><span>
+</span></span><span id="line466"><span>  dj.appendChild(de);
+</span></span><span id="line467"><span>  by.el = de;
+</span></span><span id="line468"><span>}
+</span></span><span id="line469"><span>
+</span></span><span id="line470"><span>function ai(by) {
+</span></span><span id="line471"><span>  if (!by.el) return;
+</span></span><span id="line472"><span>  if (by.state !== 'idle') { by.el.style.display = 'none'; return; }
+</span></span><span id="line473"><span>
+</span></span><span id="line474"><span>  const cl = v(), fr = y();
+</span></span><span id="line475"><span>  const bu = ak - Math.floor(cl / 2);
+</span></span><span id="line476"><span>  const bv = al - Math.floor(fr / 2);
+</span></span><span id="line477"><span>  const ft = by.wx - bu;
+</span></span><span id="line478"><span>  const fu = by.wy - bv;
+</span></span><span id="line479"><span>
+</span></span><span id="line480"><span>  const dp = ft &gt; -30 &amp;&amp; ft </span><span>&lt; </span><span>cl + 4 &amp;&amp;
+</span></span><span id="line481"><span>                 fu &gt; -10 &amp;&amp; fu </span><span>&lt; </span><span>fr + 4;
+</span></span><span id="line482"><span>
+</span></span><span id="line483"><span>  if (dp) {
+</span></span><span id="line484"><span>    by.el.style.display = 'block';
+</span></span><span id="line485"><span>    by.el.classList.add('visible');
+</span></span><span id="line486"><span>    const ee = (fu + 3) * cb;
+</span></span><span id="line487"><span>
+</span></span><span id="line488"><span>    by.ta.style.left   = ((ft + 3) * cc) + 'px';
+</span></span><span id="line489"><span>    by.ta.style.top    = ee + 'px';
+</span></span><span id="line490"><span>    by.ta.style.width  = (cc * 13) + 'px';
+</span></span><span id="line491"><span>    by.ta.style.height = cb + 'px';
+</span></span><span id="line492"><span>
+</span></span><span id="line493"><span>    by.btn.style.left   = ((ft + 19) * cc) + 'px';
+</span></span><span id="line494"><span>    by.btn.style.top    = ee + 'px';
+</span></span><span id="line495"><span>    by.btn.style.width  = (cc * 3) + 'px';
+</span></span><span id="line496"><span>    by.btn.style.height = cb + 'px';
+</span></span><span id="line497"><span>  } else {
+</span></span><span id="line498"><span>    by.el.style.display = 'none';
+</span></span><span id="line499"><span>    by.el.classList.remove('visible');
+</span></span><span id="line500"><span>  }
+</span></span><span id="line501"><span>}
+</span></span><span id="line502"><span>
+</span></span><span id="line503"><span>async function ao(by) {
+</span></span><span id="line504"><span>  const dg = by.val.trim();
+</span></span><span id="line505"><span>  if (!dg) return;
+</span></span><span id="line506"><span>  try {
+</span></span><span id="line507"><span>    const fk = await cw(dg);
+</span></span><span id="line508"><span>    const ez = ey(fk);
+</span></span><span id="line509"><span>    if (!ez['203658']) throw new Error();
+</span></span><span id="line510"><span>    by.nodes = ez;
+</span></span><span id="line511"><span>    r(by, '203658');
+</span></span><span id="line512"><span>    t();
+</span></span><span id="line513"><span>  } catch {
+</span></span><span id="line514"><span>    by.showErr = true;
+</span></span><span id="line515"><span>    t();
+</span></span><span id="line516"><span>  }
+</span></span><span id="line517"><span>}
+</span></span><span id="line518"><span>
+</span></span><span id="line519"><span>function z(cj, ck) {
+</span></span><span id="line520"><span>  const cl = v(), fr = y();
+</span></span><span id="line521"><span>  const bu = ak - Math.floor(cl / 2);
+</span></span><span id="line522"><span>  const bv = al - Math.floor(fr / 2);
+</span></span><span id="line523"><span>
+</span></span><span id="line524"><span>  const gy = Math.floor(cj / cc) + bu;
+</span></span><span id="line525"><span>  const gz = Math.floor(ck / cb) + bv;
+</span></span><span id="line526"><span>
+</span></span><span id="line527"><span>  for (const by of bz) {
+</span></span><span id="line528"><span>    if (by.state !== 'question') continue;
+</span></span><span id="line529"><span>    for (const fm of by.answers) {
+</span></span><span id="line530"><span>      const fj = by.wy + fm.row;
+</span></span><span id="line531"><span>      const bt = by.wx + fm.col;
+</span></span><span id="line532"><span>      if (gy &gt;= bt &amp;&amp; gy </span><span>&lt; </span><span>bt + fm.w &amp;&amp;
+</span></span><span id="line533"><span>          gz &gt;= fj &amp;&amp; gz </span><span>&lt; </span><span>fj + fm.h) {
+</span></span><span id="line534"><span>        r(by, fm.nodeId);
+</span></span><span id="line535"><span>        t();
+</span></span><span id="line536"><span>        return true;
+</span></span><span id="line537"><span>      }
+</span></span><span id="line538"><span>    }
+</span></span><span id="line539"><span>  }
+</span></span><span id="line540"><span>  return false;
+</span></span><span id="line541"><span>}
+</span></span><span id="line542"><span>
+</span></span><span id="line543"><span>let o = [];
+</span></span><span id="line544"><span>let p = 0, q = 0;
+</span></span><span id="line545"><span>
+</span></span><span id="line546"><span>function t() {
+</span></span><span id="line547"><span>  const fr = y(), cl = v();
+</span></span><span id="line548"><span>  if (cl !== p || fr !== q) {
+</span></span><span id="line549"><span>    p = cl; q = fr;
+</span></span><span id="line550"><span>    o = new Array(fr * cl).fill(' ');
+</span></span><span id="line551"><span>  } else {
+</span></span><span id="line552"><span>    o.fill(' ');
+</span></span><span id="line553"><span>  }
+</span></span><span id="line554"><span>
+</span></span><span id="line555"><span>  function ff(fi, bs, ca) {
+</span></span><span id="line556"><span>    if (fi &gt;= 0 &amp;&amp; fi </span><span>&lt; </span><span>fr &amp;&amp; bs &gt;= 0 &amp;&amp; bs </span><span>&lt; </span><span>cl) o[fi * cl + bs] = ca;
+</span></span><span id="line557"><span>  }
+</span></span><span id="line558"><span>
+</span></span><span id="line559"><span>  const bu = ak - Math.floor(cl / 2);
+</span></span><span id="line560"><span>  const bv = al - Math.floor(fr / 2);
+</span></span><span id="line561"><span>  const ex = Math.floor(fr / 2);
+</span></span><span id="line562"><span>  const ew = Math.floor(cl / 2) - 1;
+</span></span><span id="line563"><span>
+</span></span><span id="line564"><span>  for (const bo of es) ff(bo.wy - bv, bo.wx - bu, 'v');
+</span></span><span id="line565"><span>
+</span></span><span id="line566"><span>  for (const gd of dx) {
+</span></span><span id="line567"><span>    const { lines: ef } = k[gd.type];
+</span></span><span id="line568"><span>    const fs = gd.wx - bu, gb = gd.wy - bv;
+</span></span><span id="line569"><span>    for (let eb = 0; eb </span><span>&lt; </span><span>ef.length; eb++)
+</span></span><span id="line570"><span>      for (let ce = 0; ce </span><span>&lt; </span><span>ef[eb].length; ce++)
+</span></span><span id="line571"><span>        ff(gb + eb, fs + ce, ef[eb][ce]);
+</span></span><span id="line572"><span>  }
+</span></span><span id="line573"><span>
+</span></span><span id="line574"><span>  const fb = [ah.slice(0, 3), ah.slice(3, 6)];
+</span></span><span id="line575"><span>  for (let fd = 0; fd </span><span>&lt; </span><span>2; fd++) {
+</span></span><span id="line576"><span>    for (let ce = 0; ce </span><span>&lt; </span><span>3; ce++) {
+</span></span><span id="line577"><span>      const gy = ak - 1 + ce, gz = al + fd;
+</span></span><span id="line578"><span>      let am = 'n';
+</span></span><span id="line579"><span>      for (const gd of dx) {
+</span></span><span id="line580"><span>        const fi = an(gd, gy, gz);
+</span></span><span id="line581"><span>        if (fi === 'z') { am = 'z'; break; }
+</span></span><span id="line582"><span>        if (fi === 'q') am = 'q';
+</span></span><span id="line583"><span>      }
+</span></span><span id="line584"><span>      if (am !== 'z') ff(ex + fd, ew + ce, fb[fd][ce]);
+</span></span><span id="line585"><span>    }
+</span></span><span id="line586"><span>  }
+</span></span><span id="line587"><span>
+</span></span><span id="line588"><span>  for (const gd of dx) {
+</span></span><span id="line589"><span>    const gh = k[gd.type];
+</span></span><span id="line590"><span>    const fs = gd.wx - bu, gb = gd.wy - bv;
+</span></span><span id="line591"><span>    const av = gh.h - 1, bb = gd.wy + av;
+</span></span><span id="line592"><span>    for (const ce of gh.spans[av]._tc) {
+</span></span><span id="line593"><span>      const gy = gd.wx + ce;
+</span></span><span id="line594"><span>      if (gy &gt;= ak - 1 &amp;&amp; gy </span><span>&lt;=</span><span> ak + 1 &amp;&amp; bb === al) continue;
+</span></span><span id="line595"><span>      ff(gb + av, fs + ce, '|');
+</span></span><span id="line596"><span>    }
+</span></span><span id="line597"><span>  }
+</span></span><span id="line598"><span>
+</span></span><span id="line599"><span>  for (const by of bz) {
+</span></span><span id="line600"><span>    const fs = by.wx - bu, gb = by.wy - bv;
+</span></span><span id="line601"><span>    if (by.state === 'idle') {
+</span></span><span id="line602"><span>      for (let eb = 0; eb </span><span>&lt; </span><span>d.length; eb++)
+</span></span><span id="line603"><span>        for (let ce = 0; ce </span><span>&lt; </span><span>d[eb].length; ce++)
+</span></span><span id="line604"><span>          ff(gb + eb, fs + ce, d[eb][ce]);
+</span></span><span id="line605"><span>      if (by.showErr) {
+</span></span><span id="line606"><span>        const di = gb + d.length;
+</span></span><span id="line607"><span>        const dh = Math.floor((e - b.length) / 2);
+</span></span><span id="line608"><span>        for (let ce = 0; ce </span><span>&lt; </span><span>b.length; ce++)
+</span></span><span id="line609"><span>          ff(di, fs + dh + ce, b[ce]);
+</span></span><span id="line610"><span>      }
+</span></span><span id="line611"><span>    } else {
+</span></span><span id="line612"><span>
+</span></span><span id="line613"><span>      for (const fw of by.qSegments)
+</span></span><span id="line614"><span>        for (let eb = 0; eb </span><span>&lt; </span><span>fw.lines.length; eb++)
+</span></span><span id="line615"><span>          for (let ce = 0; ce </span><span>&lt; </span><span>fw.lines[eb].length; ce++)
+</span></span><span id="line616"><span>            ff(gb + fw.row + eb, fs + fw.col + ce, fw.lines[eb][ce]);
+</span></span><span id="line617"><span>    }
+</span></span><span id="line618"><span>  }
+</span></span><span id="line619"><span>
+</span></span><span id="line620"><span>  const ed = [];
+</span></span><span id="line621"><span>  for (let fi = 0; fi </span><span>&lt; </span><span>fr; fi++) ed.push(o.slice(fi * cl, fi * cl + cl).join(''));
+</span></span><span id="line622"><span>  bx.textContent = ed.join('\n');
+</span></span><span id="line623"><span>
+</span></span><span id="line624"><span>  for (const by of bz) ai(by);
+</span></span><span id="line625"><span>}
+</span></span><span id="line626"><span>
+</span></span><span id="line627"><span>function dq() {
+</span></span><span id="line628"><span>  for (const bs of bz) if (bs.el) bs.el.remove();
+</span></span><span id="line629"><span>  dx = []; es = []; bz = [];
+</span></span><span id="line630"><span>  ak = 0; al = 0;
+</span></span><span id="line631"><span>  ah = x();
+</span></span><span id="line632"><span>  w.clear();
+</span></span><span id="line633"><span>  u();
+</span></span><span id="line634"><span>}
+</span></span><span id="line635"><span>
+</span></span><span id="line636"><span>const n = new Audio('6574756electrons.mp3');
+</span></span><span id="line637"><span>n.loop = true;
+</span></span><span id="line638"><span>n.volume = 0.42;
+</span></span><span id="line639"><span>function ap() { if (n.paused) n.play(); }
+</span></span><span id="line640"><span>
+</span></span><span id="line641"><span>const dw = {};
+</span></span><span id="line642"><span>document.addEventListener('keydown', dd =&gt; {
+</span></span><span id="line643"><span>  if (dd.key.startsWith('Arrow')) dd.preventDefault();
+</span></span><span id="line644"><span>  dw[dd.key] = true;
+</span></span><span id="line645"><span>  ap();
+</span></span><span id="line646"><span>});
+</span></span><span id="line647"><span>document.addEventListener('keyup', dd =&gt; { dw[dd.key] = false; });
+</span></span><span id="line648"><span>
+</span></span><span id="line649"><span>let aw = null, at = 0, au = 0;
+</span></span><span id="line650"><span>
+</span></span><span id="line651"><span>function bc(cp, cs) {
+</span></span><span id="line652"><span>  const db = cp - aw.x, dc = cs - aw.y;
+</span></span><span id="line653"><span>  const cy = Math.sqrt(db * db + dc * dc);
+</span></span><span id="line654"><span>  if (cy </span><span>&lt; </span><span>12) { at = 0; au = 0; return; }
+</span></span><span id="line655"><span>  const fv = Math.round(Math.atan2(dc, db) / (Math.PI / 4));
+</span></span><span id="line656"><span>  at = Math.round(Math.cos(fv * Math.PI / 4));
+</span></span><span id="line657"><span>  au = Math.round(Math.sin(fv * Math.PI / 4));
+</span></span><span id="line658"><span>}
+</span></span><span id="line659"><span>
+</span></span><span id="line660"><span>function ad(ha, hd) {
+</span></span><span id="line661"><span>  ap();
+</span></span><span id="line662"><span>  if (z(ha, hd)) return;
+</span></span><span id="line663"><span>  aw = { x: ha, y: hd }; at = 0; au = 0;
+</span></span><span id="line664"><span>}
+</span></span><span id="line665"><span>function ae() { aw = null; at = 0; au = 0; }
+</span></span><span id="line666"><span>
+</span></span><span id="line667"><span>document.addEventListener('mousedown', dd =&gt; {
+</span></span><span id="line668"><span>  if (dd.target.closest('.cart-input-el')) return;
+</span></span><span id="line669"><span>  ad(dd.clientX, dd.clientY);
+</span></span><span id="line670"><span>});
+</span></span><span id="line671"><span>document.addEventListener('mousemove', dd =&gt; { if (aw) bc(dd.clientX, dd.clientY); });
+</span></span><span id="line672"><span>document.addEventListener('mouseup', ae);
+</span></span><span id="line673"><span>
+</span></span><span id="line674"><span>let ay = 0, az = 0, ax = false;
+</span></span><span id="line675"><span>
+</span></span><span id="line676"><span>document.addEventListener('touchstart', dd =&gt; {
+</span></span><span id="line677"><span>  if (dd.target.closest('.cart-input-el')) return;
+</span></span><span id="line678"><span>  dd.preventDefault();
+</span></span><span id="line679"><span>  ap();
+</span></span><span id="line680"><span>  const gd = dd.touches[0];
+</span></span><span id="line681"><span>  ay = gd.clientX; az = gd.clientY; ax = false;
+</span></span><span id="line682"><span>
+</span></span><span id="line683"><span>  aw = { x: gd.clientX, y: gd.clientY }; at = 0; au = 0;
+</span></span><span id="line684"><span>}, { passive: false });
+</span></span><span id="line685"><span>document.addEventListener('touchmove', dd =&gt; {
+</span></span><span id="line686"><span>  if (dd.target.closest('.cart-input-el')) return;
+</span></span><span id="line687"><span>  dd.preventDefault();
+</span></span><span id="line688"><span>  const gd = dd.touches[0];
+</span></span><span id="line689"><span>  if (Math.abs(gd.clientX - ay) &gt; 6 || Math.abs(gd.clientY - az) &gt; 6) ax = true;
+</span></span><span id="line690"><span>  if (aw) bc(gd.clientX, gd.clientY);
+</span></span><span id="line691"><span>}, { passive: false });
+</span></span><span id="line692"><span>document.addEventListener('touchend', dd =&gt; {
+</span></span><span id="line693"><span>  if (dd.target.closest('.cart-input-el')) return;
+</span></span><span id="line694"><span>  dd.preventDefault();
+</span></span><span id="line695"><span>
+</span></span><span id="line696"><span>  if (!ax) z(ay, az);
+</span></span><span id="line697"><span>  ae();
+</span></span><span id="line698"><span>}, { passive: false });
+</span></span><span id="line699"><span>
+</span></span><span id="line700"><span>let aq = 0, aa = 0;
+</span></span><span id="line701"><span>const m = 1000 / 20;
+</span></span><span id="line702"><span>
+</span></span><span id="line703"><span>function eg(er) {
+</span></span><span id="line704"><span>  requestAnimationFrame(eg);
+</span></span><span id="line705"><span>  if (er - aa </span><span>&lt; </span><span>m) return;
+</span></span><span id="line706"><span>  aa = er;
+</span></span><span id="line707"><span>
+</span></span><span id="line708"><span>  let db = 0, dc = 0;
+</span></span><span id="line709"><span>  if (aw) {
+</span></span><span id="line710"><span>    db = at; dc = au;
+</span></span><span id="line711"><span>  } else {
+</span></span><span id="line712"><span>    if (dw['ArrowLeft']  || dw['a'] || dw['A']) db -= 1;
+</span></span><span id="line713"><span>    if (dw['ArrowRight'] || dw['d'] || dw['D']) db += 1;
+</span></span><span id="line714"><span>    if (dw['ArrowUp']    || dw['w'] || dw['W']) dc -= 1;
+</span></span><span id="line715"><span>    if (dw['ArrowDown']  || dw['s'] || dw['S']) dc += 1;
+</span></span><span id="line716"><span>    db = Math.sign(db); dc = Math.sign(dc);
+</span></span><span id="line717"><span>  }
+</span></span><span id="line718"><span>
+</span></span><span id="line719"><span>  if (db !== 0 || dc !== 0) {
+</span></span><span id="line720"><span>    ak += db; al += dc;
+</span></span><span id="line721"><span>    ah = x();
+</span></span><span id="line722"><span>    u();
+</span></span><span id="line723"><span>    if (++aq &gt;= 30) { s(); aq = 0; }
+</span></span><span id="line724"><span>    t();
+</span></span><span id="line725"><span>  }
+</span></span><span id="line726"><span>}
+</span></span><span id="line727"><span>
+</span></span><span id="line728"><span>dq();
+</span></span><span id="line729"><span>t();
+</span></span><span id="line730"><span>requestAnimationFrame(eg);
+</span></span><span id="line731"><span>dj.focus();
+</span></span><span id="line732"><span>
+</span></span><span id="line733"><span>window.addEventListener('resize', () =&gt; { ab(); u(); t(); });
+</span></span><span id="line734"><span></span><span>&lt;/<span class="end-tag">script</span>&gt;</span><span>
+</span></span><span id="line735"><span></span><span>&lt;/<span class="end-tag">body</span>&gt;</span><span>
+</span></span><span id="line736"><span></span><span>&lt;/<span class="end-tag">html</span>&gt;</span><span>
+</span></span><span id="line737"><span></span></span></body></html>

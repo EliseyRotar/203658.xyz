@@ -5,6 +5,7 @@ This folder contains the **original source code** from https://203658.xyz/ (NOT 
 ## Files
 
 - **index.html** - The complete game (from xqr.htm)
+- **view-source.htm** - Firefox view-source version of the game
 - **xqr_files/** - Supporting files for the game
   - **a.htm** - Cloudflare challenge page
   - **a_data/main.js** - Cloudflare challenge script
