@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>xqr</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { background: #1e1e1e; width: 100%; height: 100%; overflow: hidden; }
+#game {
+  font-family: monospace;
+  font-size: 14px;
+  line-height: 1.2;
+  color: #fff;
+  background: #1e1e1e;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  user-select: none;
+  -webkit-user-select: none;
+  outline: none;
+  position: relative;
+}
+pre { white-space: pre; display: block; }
+
+</style>
+<script defer="defer" src="xqr_files/script.js" data-website-id="b2a80c91-e71a-43e1-acad-f568204fd976"></script>
+</head>
+<body>
+<div id="game" tabindex="0"><pre id="canvas">                                               /    \                                                                                                                                                        /  \                                /\                
+                                               /    \                                            ╓────────────────────────╖                                v                                                /    \       v                      /  \               
+                               /\             /______\                                           ║ -- insert cartridge -- ║                                                                                 /    \                              /  \               
+                              /  \               ||                                              ║ ┌─────────────┐┌─────┐ ║                               /\                                               /______\                            /____\              
+                              /  \                                            /\                 ║ │             ││ run │ ║              /\    v         /  \                                                 ||                     /\          ||           /\   
+                             /____\                                          /  \                ║ └─────────────┘└─────┘ ║             /  \             /  \ v                                                                     /  \          v      v   /  \  
+                               ||        v                                   /  \         v v    ╙────────────────────────╜             /  \            /____\                                                                      /  \                     /  \  
+                                                                            /____\                v                                   v/____\             ||                                                                       /____\                   /    \ 
+                                                                              ||                                                         ||                                              v                                           ||                     /    \ 
+   /\              /\                                                                                    v                                                                                                                                                 /______\
+  /  \            /  \            v                                                 /\        /\                                      /\                v               /\                         v                   v                   v                  ||   
+  /  \            /  \                                                             /  \      /  \                                    /  \                              /  \         /\                                                                             
+ /____\          /____\                                                   v        /  \      /  \            v                       /  \                              /  \        /  \                                                        v                   
+   ||              ||                                                             /    \    /____\                        /\        /____\                            /____\       /  \                                  /\                                        
+                           v                                                      /    \      ||               /\        /  \         ||                                ||        /    \              /\                /  \                                     v 
+                                                              v                  /______\                     /  \       /  \                                                     /    \             /  \               /  \                                      /
+                                                                                    ||                        /  \      /____\  v                                                /______\            /  \              /____\                                    / 
+                                                                                                             /    \       ||                                                        ||       v      /    \               ||                                      / 
+                      v         v                            /\                   v                          /    \                                              /\                                 /    \                                                      /__
+                               v                            /  \                     v             v        /______\                                            /  \                               /______\                /\                                     |
+                                                          v /  \                                               ||                                               /  \                              v   ||                  /  \   v                                 
+                              v                  /\        /____\                     v                                                                        /____\                                                     /  \                                     
+                                                /  \         ||    v                                                                      v                      ||                                     v                /____\v      /\                           
+                             /\                 /  \        v    v                   v                                                                                                                /\   v         v     ||        /  \                          
+                            /  \               /    \ v                                                                                        /\                                                    /  \                            /  \                          
+                            /  \               /    \ v              v                       /\                v                              /  \                                       /\          /  \                           /    \                         
+                           /____\             /______\                                      /  \                                        v     /  \                                      /  \        /____\                          /    \                         
+  v                /\        ||                  ||                               v         /  \                                             /____\                                     /  \          ||                           /______\                        
+                  /  \                                                                     /____\                                v             ||                /\                    /____\                                         ||                           
+                  /  \                                                                       ||         /\                                                      /  \                     ||              v                  /\                  /\                 
+                 /____\                                               v                          v     /  \          /\         841                /\           /  \                                                       /  \                /  \                
+                   || v                                                                                /  \         /  \        037               /  \         /____\                                                      /  \                /  \                
+                                                                                                      /____\        /  \                          /  \       v   ||                                                       /____\              /    \               
+                                                                                                        ||         /____\                        /____\                                                                     ||                /    \               
+                                        /\            v                                                              ||                            ||                                            v                                           /______\              
+                  /\                   /  \                                                                            v                           v               v  /\                                                                        ||                 
+        v        /  \                  /  \                                                                                 v         /\                             /  \                                                     v                                    
+                 /  \                 /    \                                                                                    v    /  \                            /  \        v    v                                   v                                        
+                /    \                /    \                                  /\                                                     /  \                           /____\                                v                 /\                                     
+                /    \              v/______\        /\               v      /  \                                           v       /____\                            ||                                                v  /  \                              /\    
+               /______\                 ||          /  \                     /  \                                                     ||                                                                                   /  \                    /\       /  \   
+        /\        ||                    v           /  \                    /____\                                     /\                                                                                                 /____\                  /  \      /  \   
+       /  \                           v            /____\                     ||                                      /  \                                                   v     v                                        ||                    /  \     /____\  
+       /  \                                 v        ||                                                               /  \        /\                                                                              v                              /    \      ||    
+      /____\                                                                     v                                   /____\      /  \                                                                                                            /    \            
+        ||                                     v                                      /\         /\                    ||     v  /  \                                                                                         /\                /______\          v
+                                                                                     /  \       /  \                            /    \                                                                v                      /  \                  ||              
+                                           v                                         /  \       /  \                            /    \                                          /\                    v       v              /  \                                  
+                                 v                                                  /____\     /____\                          /______\                                        /  \                                         /____\      v                          
+                                                                                      ||         ||                v              ||                                   /\      /  \                                           ||                                   
+                                                                                                                                                 v                    /  \    /    \                                                                               
+                /\                 v                      /\                                                                                                          /  \    /    \                                       v         v                /\           
+               /  \                                      /  \                                       /\                            /\                   /\            /____\  /______\                                                                /  \          
+               /  \                                      /  \   v             /\                   /  \                    v     /  \                 /  \             ||       ||                  /\                  v                            /  \          
+              /____\                                    /____\               /  \                  /  \         /\               /  \                 /  \                   v                     /  \                                 /\          /____\         
+                ||                                        ||                 /  \                 /____\       /  \             /____\               /____\                                        /  \          v                     /  \  v        ||           
+                                                     v                   v  /    \                  ||         /  \               ||                   ||             v                           /    \                               /  \                        
+                                                                            /    \        /\                  /    \                                              /\                              /    \          /\        /\        /____\                       
+                                               /\         /\         v     /______\      /  \                 /    \                                             /  \                            /______\        /  \      /  \         ||                         
+                                              /  \       /  \                 ||         /  \                /______\        v                                   /  \                               ||           /  \      /  \                                    </pre><div class="cart-input-el" style="position: absolute; top: 0px; left: 0px; pointer-events: none; width: 0px; height: 0px; display: none;"><textarea rows="1" spellcheck="false" autocomplete="off" autocapitalize="none" autocorrect="off" inputmode="verbatim" style="pointer-events: auto; position: absolute; background: transparent; color: rgb(255, 255, 255); caret-color: rgb(255, 255, 255); border: medium; outline: none; resize: none; overflow: hidden; padding: 0px; margin: 0px; font-family: monospace; font-size: 14px; line-height: 1.2; user-select: text;"></textarea><button style="pointer-events: auto; position: absolute; background: transparent; color: transparent; border: medium; outline: none; padding: 0px; margin: 0px; cursor: pointer; font-size: 0px;"></button></div><div class="cart-input-el visible" style="position: absolute; top: 0px; left: 0px; pointer-events: none; width: 0px; height: 0px; display: block;"><textarea rows="1" spellcheck="false" autocomplete="off" autocapitalize="none" autocorrect="off" inputmode="verbatim" style="pointer-events: auto; position: absolute; background: transparent; color: rgb(255, 255, 255); caret-color: rgb(255, 255, 255); border: medium; outline: none; resize: none; overflow: hidden; padding: 0px; margin: 0px; font-family: monospace; font-size: 14px; line-height: 1.2; user-select: text; left: 769.73px; top: 67.2143px; width: 100.065px; height: 16.8036px;"></textarea><button style="pointer-events: auto; position: absolute; background: transparent; color: transparent; border: medium; outline: none; padding: 0px; margin: 0px; cursor: pointer; font-size: 0px; left: 892.887px; top: 67.2143px; width: 23.0919px; height: 16.8036px;"></button></div></div>
+<script>const _S=JSON.parse(atob('WyJQQktERjIiLCJBRVMtR0NNIiwiU0hBLTI1NiIsImVuYy1zYWx0IiwiZGVyaXZlS2V5IiwiZGVjcnlwdCIsInJhdyIsImd6aXAiLCJ1bmludGVyZXN0aW5nMjA1NDM2NzA1Mzg0Il0='));
+
+const dj   = document.getElementById('game');
+const bx = document.getElementById('canvas');
+const f = [
+  '   /\\  ',
+  '  /  \\ ',
+  '  /  \\ ',
+  ' /    \\',
+  ' /    \\',
+  '/______\\',
+  '   ||  ',
+];
+const h = [
+  '  /\\ ',
+  ' /  \\',
+  ' /  \\',
+  '/____\\',
+  '  || ',
+];
+
+const d = [
+  '╓────────────────────────╖',
+  '║ -- insert cartridge -- ║',
+  '║ ┌─────────────┐┌─────┐ ║',
+  '║ │             ││ run │ ║',
+  '║ └─────────────┘└─────┘ ║',
+  '╙────────────────────────╜',
+];
+const b = 'invalid cartridge';
+const e = 26;
+const c = 6;
+
+const j = 22;
+const a = 17;
+
+function hg(ef) {
+  const fz = [];
+  for (let eb = 0; eb < ef.length; eb++) {
+    const ec = ef[eb];
+    if (eb === ef.length - 1) {
+      const ar = new Set();
+      for (let ce = 0; ce < ec.length; ce++) if (ec[ce] === '|') ar.add(ce);
+      fz.push({ type: 'q', _tc: ar });
+    } else {
+      let ea = -1, fp = -1;
+      for (let ce = 0; ce < ec.length; ce++) {
+        if (ec[ce] !== ' ') { if (ea === -1) ea = ce; fp = ce; }
+      }
+      fz.push(ea === -1 ? null : { type: 'z', left: ea, right: fp });
+    }
+  }
+  return fz;
+}
+
+const k = {
+  g: { lines: f, w: 8, h: f.length, spans: hg(f) },
+  f: { lines: h, w: 6, h: h.length, spans: hg(h) },
+};
+
+let cc = 8.4, cb = 16.8;
+function ab() {
+  const gj = document.createElement('pre');
+  gj.style.cssText = "position:absolute;visibility:hidden;font-family:monospace;font-size:14px;line-height:1.2;";
+  gj.textContent = 'X';
+  document.body.appendChild(gj);
+  const fi = gj.getBoundingClientRect();
+  cc = fi.width || 8.4;
+  cb = fi.height || 16.8;
+  document.body.removeChild(gj);
+}
+ab();
+
+function v() { return Math.floor(window.innerWidth  / cc); }
+function y() { return Math.floor(window.innerHeight / cb); }
+
+let dx = [], es = [], bz = [];
+let ak = 0, al = 0;
+let ah = '000000';
+const l = 16;
+const w = new Set();
+
+function x() {
+  return String(Math.floor(Math.random() * 1000000)).padStart(6, '0');
+}
+
+function ag(gy, gz, gr, dk) {
+  for (const gd of dx) {
+    const gh = k[gd.type];
+    if (gy + gr + 2 > gd.wx && gy < gd.wx + gh.w + 2 &&
+        gz + dk + 1 > gd.wy && gz < gd.wy + gh.h + 1) return true;
+  }
+  for (const bs of bz) {
+    if (gy + gr + 2 > bs.wx && gy < bs.wx + e + 2 &&
+        gz + dk + 1 > bs.wy && gz < bs.wy + c + 2) return true;
+  }
+  return false;
+}
+
+function af(gy, gz) {
+  for (const gd of dx) {
+    const gh = k[gd.type];
+    if (gy + e + 2 > gd.wx && gy < gd.wx + gh.w + 2 &&
+        gz + c + 2 > gd.wy && gz < gd.wy + gh.h + 1) return true;
+  }
+  for (const bs of bz) {
+    if (gy + e + 2 > bs.wx - 2 && gy < bs.wx + e + 2 &&
+        gz + c + 2 > bs.wy - 2 && gz < bs.wy + c + 2) return true;
+  }
+  return false;
+}
+
+function aj(hb, hc, he, hf) {
+  if (hc <= hb || hf <= he) return;
+  for (let gy = hb; gy < hc; gy++)
+    for (let gz = he; gz < hf; gz++) {
+      if (Math.random() > 0.007) continue;
+      const gm = Math.random() < 0.65 ? 'f' : 'g';
+      if (!ag(gy, gz, k[gm].w, k[gm].h)) dx.push({ type: gm, wx: gy, wy: gz });
+    }
+  for (let gy = hb; gy < hc; gy++)
+    for (let gz = he; gz < hf; gz++) {
+      if (Math.random() > 0.007) continue;
+      es.push({ wx: gy, wy: gz });
+    }
+  const bm = (hc - hb) * (hf - he);
+  if (Math.random() < bm * 0.00005) {
+    for (let bn = 0; bn < 20; bn++) {
+      const gy = hb + Math.floor(Math.random() * Math.max(1, hc - hb - 26));
+      const gz = he + Math.floor(Math.random() * Math.max(1, hf - he - 8));
+      if (!af(gy, gz)) {
+        const by = {
+          wx: gy, wy: gz,
+          state: 'idle',
+          val: '',
+          nodes: {},
+          curNode: '',
+
+          answers: [],
+
+          el: null,
+          showErr: false,
+        };
+        bz.push(by);
+        ac(by);
+        break;
+      }
+    }
+  }
+}
+
+function bd(cl, fr) {
+  const dm = Math.ceil(cl / 2) + 20;
+  const dl = Math.ceil(fr / 2) + 20;
+  return { minX: ak - dm, maxX: ak + dm, minY: al - dl, maxY: al + dl };
+}
+
+function u() {
+  const cl = v(), fr = y();
+  const { minX: ek, maxX: eh, minY: el, maxY: ei } = bd(cl, fr);
+  const cq = Math.floor(ek / l), cr = Math.floor((eh - 1) / l);
+  const ct = Math.floor(el / l), cu = Math.floor((ei - 1) / l);
+  for (let cs = ct; cs <= cu; cs++)
+    for (let cp = cq; cp <= cr; cp++) {
+      const dv = cp + ',' + cs;
+      if (w.has(dv)) continue;
+      w.add(dv);
+      aj(cp * l, cp * l + l, cs * l, cs * l + l);
+    }
+}
+
+function s() {
+  const cl = v(), fr = y();
+  const dm = Math.ceil(cl / 2) + 60, dl = Math.ceil(fr / 2) + 60;
+  const ek = ak - dm, eh = ak + dm;
+  const el = al - dl, ei = al + dl;
+  dx = dx.filter(gd => gd.wx > ek && gd.wx < eh && gd.wy > el && gd.wy < ei);
+  es = es.filter(bo => bo.wx > ek && bo.wx < eh && bo.wy > el && bo.wy < ei);
+  bz = bz.filter(bs => {
+    const du = bs.wx > ek && bs.wx < eh && bs.wy > el && bs.wy < ei;
+    if (!du && bs.el) { bs.el.remove(); bs.el = null; }
+    return du;
+  });
+  const cf = Math.floor(ek / l) - 1, cg = Math.floor(eh / l) + 1;
+  const ch = Math.floor(el / l) - 1, ci = Math.floor(ei / l) + 1;
+  for (const dv of w) {
+    const [cp, cs] = dv.split(',').map(Number);
+    if (cp < cf || cp > cg || cs < ch || cs > ci) w.delete(dv);
+  }
+}
+
+function an(gd, gy, gz) {
+  const gh = k[gd.type];
+  const eb = gz - gd.wy; if (eb < 0 || eb >= gh.h) return 'n';
+  const ce = gy - gd.wx; if (ce < 0 || ce >= gh.w) return 'n';
+  const fy = gh.spans[eb];
+  if (!fy) return 'n';
+  if (fy.type === 'q') return fy._tc.has(ce) ? 'q' : 'n';
+  return (ce >= fy.left && ce <= fy.right) ? 'z' : 'n';
+}
+
+const i = _S[8];
+
+async function cx(fg) {
+  const df = new TextEncoder();
+  const fk = await crypto.subtle.importKey(_S[6], df.encode(fg), _S[0], false, [_S[4]]);
+  return crypto.subtle.deriveKey(
+    { name: _S[0], salt: df.encode(_S[3]), iterations: 100000, hash: _S[2] },
+    fk, { name: _S[1], length: 256 }, false, [_S[5]]
+  );
+}
+
+async function cv(br) {
+  const da = new DecompressionStream(_S[7]);
+  const gx = da.writable.getWriter();
+  gx.write(br); gx.close();
+  const cd = [], fl = da.readable.getReader();
+  while (true) {
+    const { done: cz, value: gq } = await fl.read();
+    if (cz) break;
+    cd.push(gq);
+  }
+  const ev = new Uint8Array(cd.reduce((be, bs) => be + bs.length, 0));
+  let et = 0;
+  for (const bs of cd) { ev.set(bs, et); et += bs.length; }
+  return ev;
+}
+
+async function cw(dg) {
+  const [ds, co] = dg.trim().split(':');
+  const dr  = Uint8Array.from(atob(ds), bs => bs.charCodeAt(0));
+  const cn  = Uint8Array.from(atob(co), bs => bs.charCodeAt(0));
+  const dv = await cx(i);
+  const fc = await crypto.subtle.decrypt({ name: _S[1], iv: dr }, dv, cn);
+  return new TextDecoder().decode(await cv(new Uint8Array(fc)));
+}
+
+const g = 1582;
+
+function ey(fk) {
+  const eq = {};
+  const ef = fk.split('\n').map(dy => dy.trim()).filter(dy => /^\d{6} /.test(dy));
+  for (let dn = 0; dn < ef.length; dn += 3) {
+    if (ef[dn].startsWith('000000')) continue;
+    const [en, ...ep] = ef[dn].split(' ');
+    const eo = ep.join(' ');
+    if (eo.length > g) throw new Error();
+    const bl = [];
+    for (let dt = dn + 1; dt < dn + 3 && dt < ef.length; dt++) {
+      if (ef[dt].startsWith('000000')) continue;
+      const [gf, ...bi] = ef[dt].split(' ');
+      const bh = bi.join(' ');
+      if (bh.length > g) throw new Error();
+      bl.push({ target: gf, text: bh });
+    }
+    eq[en] = { text: eo, answers: bl };
+  }
+  return eq;
+}
+
+function gw(gi, gt) {
+  const gv = gi.split(' ');
+  const ef = []; let ec = '';
+  for (const gu of gv) {
+    if (!ec) { ec = gu; }
+    else if ((ec + ' ' + gu).length <= gt) { ec += ' ' + gu; }
+    else { ef.push(ec); ec = gu; }
+  }
+  if (ec) ef.push(ec);
+  return ef;
+}
+
+function cm(gc, gt) {
+  const gk = gt - gc.length;
+  const ea  = Math.floor(gk / 2);
+  return ' '.repeat(ea) + gc + ' '.repeat(gk - ea);
+}
+
+function fo(gi) {
+  const ef = gw(gi, j);
+  if (ef.length > 1) {
+    const dz = ef[ef.length - 1];
+    if (!dz.includes(' ')) {
+      const fe = ef[ef.length - 2].split(' ');
+      if (fe.length > 2) {
+        ef[ef.length - 1] = fe.pop() + ' ' + dz;
+        ef[ef.length - 2] = fe.join(' ');
+      }
+    }
+  }
+  const ev = ['╓────────────────────────╖'];
+  for (const dy of ef) ev.push('║ ' + cm(dy, j) + ' ║');
+  ev.push('╙────────────────────────╜');
+  return ev;
+}
+
+function fn(gi) {
+  const ej = Math.max(...gi.split(' ').map(gr => gr.length));
+  let ef = gw(gi, a);
+  const gg = ef.length;
+  for (let gr = a - 1; gr >= ej; gr--) {
+    const bw = gw(gi, gr);
+    if (bw.length > gg) break;
+    ef = bw;
+  }
+  const gr = Math.max(...ef.map(dy => dy.length));
+  const bp = '─'.repeat(gr + 2);
+  const ev = ['┌' + bp + '┐'];
+  for (const dy of ef) ev.push('│ ' + cm(dy, gr) + ' │');
+  ev.push('└' + bp + '┘');
+  return ev;
+}
+
+function r(by, en) {
+  const em = by.nodes[en];
+  if (!em) return;
+  by.state = 'question';
+  by.curNode = en;
+  by.showErr = false;
+
+  ga(em.text);
+
+  const fh = fo(em.text);
+
+  const fx = [{ lines: fh, col: 0, row: 0 }];
+  const bk = [];
+
+  let fq = fh.length;
+
+  for (const bj of em.answers) {
+    const bf = fn(bj.text);
+    const bg = bf[0].length;
+    const eu = Math.floor((26 - bg) / 2);
+    bk.push({ row: fq, col: eu, w: bg, h: bf.length, nodeId: bj.target });
+    fx.push({ lines: bf, col: eu, row: fq });
+    fq += bf.length;
+  }
+
+  by.qSegments = fx;
+  by.answers = bk;
+
+  if (by.el) { by.el.style.display = 'none'; by.el.classList.remove('visible'); }
+}
+
+function ba() {
+  try {
+    const gn = new SpeechSynthesisUtterance(' ');
+    gn.volume = 0;
+    gn.rate = 10;
+    window.speechSynthesis.speak(gn);
+  } catch {}
+}
+
+function ga(gi) {
+  window.speechSynthesis.cancel();
+  const go = new SpeechSynthesisUtterance(gi);
+  go.rate = 1.08;
+  const gl = () => {
+    const gs = window.speechSynthesis.getVoices().find(gp => gp.name === 'Whisper');
+    if (gs) go.voice = gs;
+    window.speechSynthesis.speak(go);
+  };
+  window.speechSynthesis.getVoices().length ? gl()
+    : (window.speechSynthesis.onvoiceschanged = gl);
+}
+
+function ac(by) {
+  const de = document.createElement('div');
+  de.className = 'cart-input-el';
+  de.style.cssText = 'position:absolute;top:0;left:0;pointer-events:none;width:0;height:0;';
+
+  const ge = document.createElement('textarea');
+  ge.rows = 1;
+  ge.setAttribute('spellcheck', 'false');
+  ge.setAttribute('autocomplete', 'off');
+  ge.setAttribute('autocapitalize', 'none');
+  ge.setAttribute('autocorrect', 'off');
+  ge.setAttribute('inputmode', 'verbatim');
+  ge.value = by.val || '';
+  ge.style.cssText = [
+    'pointer-events:auto',
+    'position:absolute',
+    'background:transparent',
+    'color:#fff',
+    'caret-color:#fff',
+    'border:none',
+    'outline:none',
+    'resize:none',
+    'overflow:hidden',
+    'padding:0',
+    'margin:0',
+    'font-family:monospace',
+    'font-size:14px',
+    'line-height:1.2',
+    'user-select:text',
+    '-webkit-user-select:text',
+  ].join(';');
+  ge.addEventListener('keydown', dd => {
+    if (dd.key === 'Enter') { dd.preventDefault(); ba(); ao(by); }
+    dd.stopPropagation();
+  });
+  ge.addEventListener('input', () => { by.val = ge.value; });
+
+  ge.addEventListener('paste', dd => {
+    const fa = dd.clipboardData && dd.clipboardData.getData('text');
+    if (fa) {
+      dd.preventDefault();
+      ge.value = fa;
+      by.val = fa;
+    }
+  });
+  ge.addEventListener('touchstart', dd => dd.stopPropagation());
+  ge.addEventListener('mousedown', dd => dd.stopPropagation());
+  by.ta = ge;
+  de.appendChild(ge);
+
+  const bq = document.createElement('button');
+  bq.style.cssText = [
+    'pointer-events:auto',
+    'position:absolute',
+    'background:transparent',
+    'color:transparent',
+    'border:none',
+    'outline:none',
+    'padding:0',
+    'margin:0',
+    'cursor:pointer',
+    'font-size:0',
+  ].join(';');
+  bq.addEventListener('click', dd => { dd.stopPropagation(); ba(); ao(by); });
+  bq.addEventListener('mousedown', dd => dd.stopPropagation());
+  bq.addEventListener('touchstart', dd => dd.stopPropagation());
+  by.btn = bq;
+  de.appendChild(bq);
+
+  dj.appendChild(de);
+  by.el = de;
+}
+
+function ai(by) {
+  if (!by.el) return;
+  if (by.state !== 'idle') { by.el.style.display = 'none'; return; }
+
+  const cl = v(), fr = y();
+  const bu = ak - Math.floor(cl / 2);
+  const bv = al - Math.floor(fr / 2);
+  const ft = by.wx - bu;
+  const fu = by.wy - bv;
+
+  const dp = ft > -30 && ft < cl + 4 &&
+                 fu > -10 && fu < fr + 4;
+
+  if (dp) {
+    by.el.style.display = 'block';
+    by.el.classList.add('visible');
+    const ee = (fu + 3) * cb;
+
+    by.ta.style.left   = ((ft + 3) * cc) + 'px';
+    by.ta.style.top    = ee + 'px';
+    by.ta.style.width  = (cc * 13) + 'px';
+    by.ta.style.height = cb + 'px';
+
+    by.btn.style.left   = ((ft + 19) * cc) + 'px';
+    by.btn.style.top    = ee + 'px';
+    by.btn.style.width  = (cc * 3) + 'px';
+    by.btn.style.height = cb + 'px';
+  } else {
+    by.el.style.display = 'none';
+    by.el.classList.remove('visible');
+  }
+}
+
+async function ao(by) {
+  const dg = by.val.trim();
+  if (!dg) return;
+  try {
+    const fk = await cw(dg);
+    const ez = ey(fk);
+    if (!ez['203658']) throw new Error();
+    by.nodes = ez;
+    r(by, '203658');
+    t();
+  } catch {
+    by.showErr = true;
+    t();
+  }
+}
+
+function z(cj, ck) {
+  const cl = v(), fr = y();
+  const bu = ak - Math.floor(cl / 2);
+  const bv = al - Math.floor(fr / 2);
+
+  const gy = Math.floor(cj / cc) + bu;
+  const gz = Math.floor(ck / cb) + bv;
+
+  for (const by of bz) {
+    if (by.state !== 'question') continue;
+    for (const fm of by.answers) {
+      const fj = by.wy + fm.row;
+      const bt = by.wx + fm.col;
+      if (gy >= bt && gy < bt + fm.w &&
+          gz >= fj && gz < fj + fm.h) {
+        r(by, fm.nodeId);
+        t();
+        return true;
+      }
+    }
+  }
+  return false;
+}
+
+let o = [];
+let p = 0, q = 0;
+
+function t() {
+  const fr = y(), cl = v();
+  if (cl !== p || fr !== q) {
+    p = cl; q = fr;
+    o = new Array(fr * cl).fill(' ');
+  } else {
+    o.fill(' ');
+  }
+
+  function ff(fi, bs, ca) {
+    if (fi >= 0 && fi < fr && bs >= 0 && bs < cl) o[fi * cl + bs] = ca;
+  }
+
+  const bu = ak - Math.floor(cl / 2);
+  const bv = al - Math.floor(fr / 2);
+  const ex = Math.floor(fr / 2);
+  const ew = Math.floor(cl / 2) - 1;
+
+  for (const bo of es) ff(bo.wy - bv, bo.wx - bu, 'v');
+
+  for (const gd of dx) {
+    const { lines: ef } = k[gd.type];
+    const fs = gd.wx - bu, gb = gd.wy - bv;
+    for (let eb = 0; eb < ef.length; eb++)
+      for (let ce = 0; ce < ef[eb].length; ce++)
+        ff(gb + eb, fs + ce, ef[eb][ce]);
+  }
+
+  const fb = [ah.slice(0, 3), ah.slice(3, 6)];
+  for (let fd = 0; fd < 2; fd++) {
+    for (let ce = 0; ce < 3; ce++) {
+      const gy = ak - 1 + ce, gz = al + fd;
+      let am = 'n';
+      for (const gd of dx) {
+        const fi = an(gd, gy, gz);
+        if (fi === 'z') { am = 'z'; break; }
+        if (fi === 'q') am = 'q';
+      }
+      if (am !== 'z') ff(ex + fd, ew + ce, fb[fd][ce]);
+    }
+  }
+
+  for (const gd of dx) {
+    const gh = k[gd.type];
+    const fs = gd.wx - bu, gb = gd.wy - bv;
+    const av = gh.h - 1, bb = gd.wy + av;
+    for (const ce of gh.spans[av]._tc) {
+      const gy = gd.wx + ce;
+      if (gy >= ak - 1 && gy <= ak + 1 && bb === al) continue;
+      ff(gb + av, fs + ce, '|');
+    }
+  }
+
+  for (const by of bz) {
+    const fs = by.wx - bu, gb = by.wy - bv;
+    if (by.state === 'idle') {
+      for (let eb = 0; eb < d.length; eb++)
+        for (let ce = 0; ce < d[eb].length; ce++)
+          ff(gb + eb, fs + ce, d[eb][ce]);
+      if (by.showErr) {
+        const di = gb + d.length;
+        const dh = Math.floor((e - b.length) / 2);
+        for (let ce = 0; ce < b.length; ce++)
+          ff(di, fs + dh + ce, b[ce]);
+      }
+    } else {
+
+      for (const fw of by.qSegments)
+        for (let eb = 0; eb < fw.lines.length; eb++)
+          for (let ce = 0; ce < fw.lines[eb].length; ce++)
+            ff(gb + fw.row + eb, fs + fw.col + ce, fw.lines[eb][ce]);
+    }
+  }
+
+  const ed = [];
+  for (let fi = 0; fi < fr; fi++) ed.push(o.slice(fi * cl, fi * cl + cl).join(''));
+  bx.textContent = ed.join('\n');
+
+  for (const by of bz) ai(by);
+}
+
+function dq() {
+  for (const bs of bz) if (bs.el) bs.el.remove();
+  dx = []; es = []; bz = [];
+  ak = 0; al = 0;
+  ah = x();
+  w.clear();
+  u();
+}
+
+const n = new Audio('6574756electrons.mp3');
+n.loop = true;
+n.volume = 0.42;
+function ap() { if (n.paused) n.play(); }
+
+const dw = {};
+document.addEventListener('keydown', dd => {
+  if (dd.key.startsWith('Arrow')) dd.preventDefault();
+  dw[dd.key] = true;
+  ap();
+});
+document.addEventListener('keyup', dd => { dw[dd.key] = false; });
+
+let aw = null, at = 0, au = 0;
+
+function bc(cp, cs) {
+  const db = cp - aw.x, dc = cs - aw.y;
+  const cy = Math.sqrt(db * db + dc * dc);
+  if (cy < 12) { at = 0; au = 0; return; }
+  const fv = Math.round(Math.atan2(dc, db) / (Math.PI / 4));
+  at = Math.round(Math.cos(fv * Math.PI / 4));
+  au = Math.round(Math.sin(fv * Math.PI / 4));
+}
+
+function ad(ha, hd) {
+  ap();
+  if (z(ha, hd)) return;
+  aw = { x: ha, y: hd }; at = 0; au = 0;
+}
+function ae() { aw = null; at = 0; au = 0; }
+
+document.addEventListener('mousedown', dd => {
+  if (dd.target.closest('.cart-input-el')) return;
+  ad(dd.clientX, dd.clientY);
+});
+document.addEventListener('mousemove', dd => { if (aw) bc(dd.clientX, dd.clientY); });
+document.addEventListener('mouseup', ae);
+
+let ay = 0, az = 0, ax = false;
+
+document.addEventListener('touchstart', dd => {
+  if (dd.target.closest('.cart-input-el')) return;
+  dd.preventDefault();
+  ap();
+  const gd = dd.touches[0];
+  ay = gd.clientX; az = gd.clientY; ax = false;
+
+  aw = { x: gd.clientX, y: gd.clientY }; at = 0; au = 0;
+}, { passive: false });
+document.addEventListener('touchmove', dd => {
+  if (dd.target.closest('.cart-input-el')) return;
+  dd.preventDefault();
+  const gd = dd.touches[0];
+  if (Math.abs(gd.clientX - ay) > 6 || Math.abs(gd.clientY - az) > 6) ax = true;
+  if (aw) bc(gd.clientX, gd.clientY);
+}, { passive: false });
+document.addEventListener('touchend', dd => {
+  if (dd.target.closest('.cart-input-el')) return;
+  dd.preventDefault();
+
+  if (!ax) z(ay, az);
+  ae();
+}, { passive: false });
+
+let aq = 0, aa = 0;
+const m = 1000 / 20;
+
+function eg(er) {
+  requestAnimationFrame(eg);
+  if (er - aa < m) return;
+  aa = er;
+
+  let db = 0, dc = 0;
+  if (aw) {
+    db = at; dc = au;
+  } else {
+    if (dw['ArrowLeft']  || dw['a'] || dw['A']) db -= 1;
+    if (dw['ArrowRight'] || dw['d'] || dw['D']) db += 1;
+    if (dw['ArrowUp']    || dw['w'] || dw['W']) dc -= 1;
+    if (dw['ArrowDown']  || dw['s'] || dw['S']) dc += 1;
+    db = Math.sign(db); dc = Math.sign(dc);
+  }
+
+  if (db !== 0 || dc !== 0) {
+    ak += db; al += dc;
+    ah = x();
+    u();
+    if (++aq >= 30) { s(); aq = 0; }
+    t();
+  }
+}
+
+dq();
+t();
+requestAnimationFrame(eg);
+dj.focus();
+
+window.addEventListener('resize', () => { ab(); u(); t(); });
+</script>
+
+
+</body></html>

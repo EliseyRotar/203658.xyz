@@ -669,56 +669,134 @@ async function decrypt() {
   }
 }
 
+// Story generation templates
+const storyTemplates = [
+  {
+    start: "You wake up in a mysterious forest. The trees whisper secrets. What do you do?",
+    paths: [
+      { text: "Follow the sound of running water", nodes: [
+        "You find a crystal-clear stream. A glowing fish swims by.",
+        ["Try to catch the glowing fish", "The fish grants you a wish! You feel energized."],
+        ["Wish to understand the forest's language", "The trees now speak to you! They warn of a great danger approaching."]
+      ]},
+      { text: "Climb the tallest tree to get your bearings", nodes: [
+        "From the treetop, you see a distant tower emitting strange lights.",
+        ["Head toward the mysterious tower", "The tower door opens. Inside, ancient technology hums."],
+        ["Investigate the control panel", "You activate the ancient machine. Reality begins to shift!"]
+      ]}
+    ]
+  },
+  {
+    start: "You're standing at the entrance of an abandoned space station. The airlock hisses open.",
+    paths: [
+      { text: "Enter the main corridor", nodes: [
+        "Emergency lights flicker. You hear footsteps echoing in the distance.",
+        ["Follow the footsteps", "You discover a survivor hiding in the medical bay."],
+        ["Ask about what happened", "They tell you about the AI that went rogue three days ago."]
+      ]},
+      { text: "Check the control room first", nodes: [
+        "Screens display cryptic error messages. One terminal is still active.",
+        ["Access the terminal", "You find logs revealing the station's dark secret."],
+        ["Download the data", "An alarm triggers. You have minutes to escape."]
+      ]}
+    ]
+  },
+  {
+    start: "A mysterious package arrives at your door with no return address. Open it?",
+    paths: [
+      { text: "Open the package carefully", nodes: [
+        "Inside is an ancient compass that points to something other than north.",
+        ["Follow the compass", "It leads you to a hidden door in your basement you never knew existed."],
+        ["Open the hidden door", "A staircase descends into darkness, glowing symbols line the walls."]
+      ]},
+      { text: "Scan it for anything suspicious", nodes: [
+        "Your scanner detects unusual energy signatures. The package is humming.",
+        ["Open it anyway", "A holographic map projects from inside, showing coordinates."],
+        ["Go to the coordinates", "You arrive at an abandoned warehouse. Someone is waiting."]
+      ]}
+    ]
+  },
+  {
+    start: "You're a detective investigating a crime scene in a locked room. No exits, no entries.",
+    paths: [
+      { text: "Examine the walls for hidden passages", nodes: [
+        "You find a section that sounds hollow. There's a mechanism.",
+        ["Activate the mechanism", "The wall slides open revealing a secret laboratory."],
+        ["Search the laboratory", "You discover experiments that shouldn't exist."]
+      ]},
+      { text: "Check the victim's belongings", nodes: [
+        "A strange device in their pocket. It's still warm, still active.",
+        ["Activate the device", "It projects a recording. The victim is speaking to you."],
+        ["Listen to the message", "They knew they would die. They left you instructions."]
+      ]}
+    ]
+  },
+  {
+    start: "The last human city is under siege. You're the only one who can activate the ancient defense system.",
+    paths: [
+      { text: "Rush to the central tower", nodes: [
+        "Enemies are everywhere. You fight through the chaos.",
+        ["Reach the control room", "The system requires a code. You have one chance."],
+        ["Enter the code", "The defenses activate. The city is saved, but at what cost?"]
+      ]},
+      { text: "Find another way through the underground", nodes: [
+        "Old tunnels, forgotten by most. You hear something moving in the dark.",
+        ["Investigate the sound", "You find survivors who know a secret about the defense system."],
+        ["Learn the secret", "The system was never meant to protect. It was meant to contain something."]
+      ]}
+    ]
+  }
+];
+
+function generateRandomStory() {
+  const template = storyTemplates[Math.floor(Math.random() * storyTemplates.length)];
+  let story = `203658 ${template.start}\n`;
+  let nodeId = 111111;
+  
+  // Add initial choices
+  template.paths.forEach(path => {
+    story += `${nodeId} ${path.text}\n`;
+    nodeId += 111111;
+  });
+  story += '\n';
+  
+  // Add path nodes
+  nodeId = 111111;
+  template.paths.forEach(path => {
+    let currentId = nodeId;
+    path.nodes.forEach((node, idx) => {
+      if (typeof node === 'string') {
+        story += `${currentId} ${node}\n`;
+        if (idx < path.nodes.length - 1) {
+          story += `${currentId + 111111} Continue\n`;
+        }
+        story += `203658 Go back to start\n\n`;
+        currentId += 111111;
+      } else if (Array.isArray(node)) {
+        story += `${currentId} ${node[0]}\n`;
+        story += `${currentId + 111111} ${node[1]}\n`;
+        story += `203658 Return to the beginning\n\n`;
+        currentId += 111111;
+      }
+    });
+    nodeId += 111111;
+  });
+  
+  return story.trim();
+}
+
 async function generateExample() {
-  const exampleText = `203658 You wake up in a mysterious forest. The trees whisper secrets. What do you do?
-111111 Follow the sound of running water
-222222 Climb the tallest tree to get your bearings
-
-111111 You find a crystal-clear stream. A glowing fish swims by.
-333333 Try to catch the glowing fish
-203658 Return to the forest clearing
-
-222222 From the treetop, you see a distant tower emitting strange lights.
-444444 Head toward the mysterious tower
-203658 Climb back down and reconsider
-
-333333 The fish grants you a wish! You feel energized.
-555555 Wish to understand the forest's language
-203658 Wish to return home
-
-444444 The tower door opens. Inside, ancient technology hums.
-666666 Investigate the control panel
-203658 Leave the tower
-
-555555 The trees now speak to you! They warn of a great danger approaching.
-777777 Ask how to stop the danger
-203658 Thank them and return to the clearing
-
-666666 You activate the ancient machine. Reality begins to shift!
-888888 Embrace the change
-203658 Quickly shut it down
-
-777777 The trees tell you about a sacred artifact hidden nearby.
-999999 Search for the artifact
-203658 Return to the clearing
-
-888888 You transcend into a higher dimension. The adventure continues...
-203658 Return to the beginning
-000000 End
-
-999999 You found the artifact! It pulses with power.
-203658 Take it back to the clearing
-000000 End`;
-
+  const exampleText = generateRandomStory();
+  
   document.getElementById('plaintext').value = exampleText;
   await encrypt();
   
   const output = document.getElementById('exampleOutput');
   output.innerHTML = `
-    <div class="status success">✓ Example generated and encrypted</div>
+    <div class="status success">✓ Random story generated and encrypted</div>
     <div style="margin-top: 12px; color: var(--text-muted);">
-      The example has been loaded into the "Create Cartridge" section above.
-      Scroll up to copy the encrypted cartridge.
+      A unique story has been generated! Scroll up to copy the encrypted cartridge.
+      Click "Generate Example" again for a different story.
     </div>
   `;
   output.style.display = 'block';

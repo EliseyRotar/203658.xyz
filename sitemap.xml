@@ -1,33 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Main Toolkit Page -->
   <url>
     <loc>https://eliseyrotar.github.io/203658.xyz/</loc>
     <lastmod>2026-05-05</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://eliseyrotar.github.io/203658.xyz/"/>
   </url>
+  
+  <!-- Documentation Pages -->
   <url>
     <loc>https://eliseyrotar.github.io/203658.xyz/README.md</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
+  
   <url>
     <loc>https://eliseyrotar.github.io/203658.xyz/QUICK_START.md</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.8</priority>
   </url>
+  
   <url>
     <loc>https://eliseyrotar.github.io/203658.xyz/COMPLETE_ANALYSIS.md</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
+  
   <url>
     <loc>https://eliseyrotar.github.io/203658.xyz/cartridge_analysis.md</loc>
     <lastmod>2026-05-05</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Game Source -->
+  <url>
+    <loc>https://eliseyrotar.github.io/203658.xyz/game-source/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
+  
+  <url>
+    <loc>https://eliseyrotar.github.io/203658.xyz/game-source/README.md</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <!-- External References -->
+  <url>
+    <loc>https://203658.xyz/</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <url>
+    <loc>https://github.com/EliseyRotar/203658.xyz</loc>
+    <lastmod>2026-05-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
 </urlset>
